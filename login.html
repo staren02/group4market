@@ -1,96 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chitechma Marketplace — Login</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<div class="header">
-  <div class="header-left">
-    <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-    <div>
-      <div class="header-title">Chitechma University Institute</div>
-      <div class="header-subtitle">Student Marketplace — Buea, Cameroon</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chitechma Marketplace — Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
+        <div>
+          <div class="header-title">Chitechma University Institute</div>
+          <div class="header-subtitle">
+            Student Marketplace — Buea, Cameroon
+          </div>
+        </div>
+      </div>
+      <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
     </div>
-  </div>
-  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
-</div>
-<nav>
-  <ul id="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="products.html">Products</a></li>
-    <li><a href="sell.html">Sell Item</a></li>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li id="nav-extra"></li>
-  </ul>
-</nav>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="sell.html">Sell Item</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="nav-extra"></li>
+      </ul>
+    </nav>
 
-<div class="login-page-bg">
-  <div class="login-container">
-    <img src="images/logo.png" alt="Chitechma Logo" class="login-logo">
-    <div class="login-title">Student Login</div>
-    <div class="login-subtitle">Enter your email and password to access your dashboard</div>
+    <div class="login-page-bg">
+      <div class="login-container">
+        <img src="images/logo.png" alt="Chitechma Logo" class="login-logo" />
+        <div class="login-title">Student Login</div>
+        <div class="login-subtitle">
+          Enter your email and password to access your dashboard
+        </div>
 
-    <div id="alert-box"></div>
+        <div id="alert-box"></div>
 
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" placeholder="e.g. student@chitechma.cm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="e.g. student@chitechma.cm"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+          />
+        </div>
+        <button class="form-submit" onclick="doLogin()">🔑 Login</button>
+
+        <p style="margin-top: 18px; font-size: 13px; color: #555">
+          Don't have an account?
+          <a href="register.html" style="color: #33a344; font-weight: bold"
+            >Register here</a
+          >
+        </p>
+        <p style="margin-top: 10px; font-size: 12px; color: #aaa">
+          Admin: admin@chitechma.cm / admin123
+        </p>
+        <p style="margin-top: 6px">
+          <a
+            href="index.html"
+            style="color: #33a344; font-size: 13px; text-decoration: none"
+            >← Back to Home</a
+          >
+        </p>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter your password">
-    </div>
-    <button class="form-submit" onclick="doLogin()">🔑 Login</button>
 
-    <p style="margin-top:18px; font-size:13px; color:#555;">
-      Don't have an account? <a href="register.html" style="color:#33A344; font-weight:bold;">Register here</a>
-    </p>
-    <p style="margin-top:10px; font-size:12px; color:#aaa;">
-      Admin: admin@chitechma.cm / admin123
-    </p>
-    <p style="margin-top:6px;">
-      <a href="index.html" style="color:#33A344; font-size:13px; text-decoration:none;">← Back to Home</a>
-    </p>
-  </div>
-</div>
+    <footer>
+      <p>
+        © 2025 Chitechma University Institute — Student Marketplace · Buea,
+        Cameroon
+      </p>
+    </footer>
 
-<footer>
-  <p>© 2025 Chitechma University Institute — Student Marketplace · Buea, Cameroon</p>
-</footer>
+    <script src="app.js"></script>
+    <script>
+      // Redirect if already logged in
+      document.addEventListener("DOMContentLoaded", function () {
+        if (Auth.isLoggedIn()) {
+          window.location.href = Auth.isAdmin()
+            ? "admin.html"
+            : "dashboard.html";
+        }
+        // Allow Enter key to submit
+        document
+          .getElementById("password")
+          .addEventListener("keydown", function (e) {
+            if (e.key === "Enter") doLogin();
+          });
+      });
 
-<script src="js/app.js"></script>
-<script>
-  // Redirect if already logged in
-  document.addEventListener('DOMContentLoaded', function () {
-    if (Auth.isLoggedIn()) {
-      window.location.href = Auth.isAdmin() ? 'admin.html' : 'dashboard.html';
-    }
-    // Allow Enter key to submit
-    document.getElementById('password').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') doLogin();
-    });
-  });
-
-  function doLogin() {
-    const email    = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    if (!email || !password) { showAlert('Please enter your email and password.', 'error'); return; }
-    const result = Auth.login(email, password);
-    if (result.success) {
-      showAlert('Login successful! Redirecting...', 'success');
-      setTimeout(function () {
-        window.location.href = result.user.role === 'admin' ? 'admin.html' : 'dashboard.html';
-      }, 800);
-    } else {
-      showAlert(result.msg, 'error');
-    }
-  }
-</script>
-</body>
+      function doLogin() {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        if (!email || !password) {
+          showAlert("Please enter your email and password.", "error");
+          return;
+        }
+        const result = Auth.login(email, password);
+        if (result.success) {
+          showAlert("Login successful! Redirecting...", "success");
+          setTimeout(function () {
+            window.location.href =
+              result.user.role === "admin" ? "admin.html" : "dashboard.html";
+          }, 800);
+        } else {
+          showAlert(result.msg, "error");
+        }
+      }
+    </script>
+  </body>
 </html>

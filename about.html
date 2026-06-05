@@ -1,142 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chitechma Marketplace — About</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<div class="header">
-  <div class="header-left">
-    <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-    <div>
-      <div class="header-title">Chitechma University Institute</div>
-      <div class="header-subtitle">Student Marketplace — Buea, Cameroon</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chitechma Marketplace — About</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
+        <div>
+          <div class="header-title">Chitechma University Institute</div>
+          <div class="header-subtitle">
+            Student Marketplace — Buea, Cameroon
+          </div>
+        </div>
+      </div>
+      <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
     </div>
-  </div>
-  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
-</div>
-<nav>
-  <ul id="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="products.html">Products</a></li>
-    <li><a href="sell.html">Sell Item</a></li>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li id="nav-extra"></li>
-  </ul>
-</nav>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="sell.html">Sell Item</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="nav-extra"></li>
+      </ul>
+    </nav>
 
-<div class="main-content">
-  <h1 class="page-title">About This Project</h1>
+    <div class="main-content">
+      <h1 class="page-title">About This Project</h1>
 
-  <div class="info-section">
-    <h2>📌 What is the Chitechma Student Marketplace?</h2>
-    <p>The <strong>Chitechma Student Marketplace</strong> is a web platform that allows students of
-    <strong>Chitechma University Institute, Buea</strong> to buy and sell items among themselves within
-    the school community.</p>
-    <p>Students can register with their email, list products with photos, contact sellers directly,
-    and manage everything through a personal dashboard — all without leaving campus.</p>
-  </div>
+      <div class="info-section">
+        <h2>📌 What is the Chitechma Student Marketplace?</h2>
+        <p>
+          The <strong>Chitechma Student Marketplace</strong> is a web platform
+          that allows students of
+          <strong>Chitechma University Institute, Buea</strong> to buy and sell
+          items among themselves within the school community.
+        </p>
+        <p>
+          Students can register with their email, list products with photos,
+          contact sellers directly, and manage everything through a personal
+          dashboard — all without leaving campus.
+        </p>
+      </div>
 
-  <div class="info-section">
-    <h2>❗ The Problem We Are Solving</h2>
-    <p>Chitechma students often face challenges when buying or selling used items such as textbooks,
-    electronics, and clothing. Common problems include:</p>
-    <ul>
-      <li>No organised place to advertise items for sale on campus</li>
-      <li>Relying on crowded, disorganised WhatsApp groups</li>
-      <li>Difficulty finding affordable items from trusted fellow students</li>
-      <li>Items going to waste when they could be reused</li>
-    </ul>
-    <p style="margin-top:12px;">The Chitechma Marketplace solves this with a <strong>dedicated, organised,
-    and easy-to-use</strong> platform built just for our school community.</p>
-  </div>
+      <div class="info-section">
+        <h2>❗ The Problem We Are Solving</h2>
+        <p>
+          Chitechma students often face challenges when buying or selling used
+          items such as textbooks, electronics, and clothing. Common problems
+          include:
+        </p>
+        <ul>
+          <li>No organised place to advertise items for sale on campus</li>
+          <li>Relying on crowded, disorganised WhatsApp groups</li>
+          <li>
+            Difficulty finding affordable items from trusted fellow students
+          </li>
+          <li>Items going to waste when they could be reused</li>
+        </ul>
+        <p style="margin-top: 12px">
+          The Chitechma Marketplace solves this with a
+          <strong>dedicated, organised, and easy-to-use</strong> platform built
+          just for our school community.
+        </p>
+      </div>
 
-  <div class="info-section">
-    <h2>✅ Benefits to Students</h2>
-    <div class="benefit-item">
-      <div class="benefit-icon">💰</div>
-      <div class="benefit-text">
-        <strong>Save Money</strong>
-        <span>Buy second-hand items from fellow students at affordable prices instead of shops.</span>
+      <div class="info-section">
+        <h2>✅ Benefits to Students</h2>
+        <div class="benefit-item">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-text">
+            <strong>Save Money</strong>
+            <span
+              >Buy second-hand items from fellow students at affordable prices
+              instead of shops.</span
+            >
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📦</div>
+          <div class="benefit-text">
+            <strong>Sell Easily</strong>
+            <span
+              >List items you no longer need and earn money from students who
+              need them.</span
+            >
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🤝</div>
+          <div class="benefit-text">
+            <strong>Connect with Fellow Students</strong>
+            <span
+              >Deal directly with people you already know and trust on
+              campus.</span
+            >
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📚</div>
+          <div class="benefit-text">
+            <strong>Access Textbooks &amp; Resources</strong>
+            <span
+              >Find affordable textbooks from students who have already
+              completed the course.</span
+            >
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">♻️</div>
+          <div class="benefit-text">
+            <strong>Reduce Waste</strong>
+            <span
+              >Give useful items a second life rather than throwing them
+              away.</span
+            >
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🔒</div>
+          <div class="benefit-text">
+            <strong>Safe &amp; School Community</strong>
+            <span
+              >Only registered Chitechma students can access and list items on
+              the platform.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>🛠️ Technologies Used</h2>
+        <div
+          style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px"
+        >
+          <div
+            style="
+              background: #e8f7ea;
+              border: 1px solid #33a344;
+              border-radius: 6px;
+              padding: 12px 18px;
+              font-size: 14px;
+              color: #267a33;
+              font-weight: bold;
+            "
+          >
+            HTML5 — Page Structure
+          </div>
+          <div
+            style="
+              background: #e8f7ea;
+              border: 1px solid #33a344;
+              border-radius: 6px;
+              padding: 12px 18px;
+              font-size: 14px;
+              color: #267a33;
+              font-weight: bold;
+            "
+          >
+            CSS3 — Styling &amp; Responsive Design
+          </div>
+          <div
+            style="
+              background: #e8f7ea;
+              border: 1px solid #33a344;
+              border-radius: 6px;
+              padding: 12px 18px;
+              font-size: 14px;
+              color: #267a33;
+              font-weight: bold;
+            "
+          >
+            JavaScript — Interactivity &amp; Logic
+          </div>
+          <div
+            style="
+              background: #e8f7ea;
+              border: 1px solid #33a344;
+              border-radius: 6px;
+              padding: 12px 18px;
+              font-size: 14px;
+              color: #267a33;
+              font-weight: bold;
+            "
+          >
+            localStorage — Data Storage
+          </div>
+          <div
+            style="
+              background: #e8f7ea;
+              border: 1px solid #33a344;
+              border-radius: 6px;
+              padding: 12px 18px;
+              font-size: 14px;
+              color: #267a33;
+              font-weight: bold;
+            "
+          >
+            FileReader API — Image Uploads
+          </div>
+        </div>
+        <p style="margin-top: 14px; font-size: 13px; color: #888">
+          Note: This is a front-end prototype using browser localStorage as the
+          data store. A future version would use a PHP + MySQL backend for real
+          persistent storage.
+        </p>
+      </div>
+
+      <div class="info-section">
+        <h2>🚀 Future Improvements</h2>
+        <ul>
+          <li>Real backend authentication using PHP and MySQL database</li>
+          <li>Image hosting on a real server</li>
+          <li>Real-time messaging/chat between buyers and sellers</li>
+          <li>Admin moderation panel to approve/reject listings</li>
+          <li>Search with advanced filters and sorting</li>
+          <li>Mobile app version (Android/iOS)</li>
+          <li>MTN Mobile Money / Orange Money payment integration</li>
+          <li>Email notifications for new messages and listings</li>
+        </ul>
       </div>
     </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">📦</div>
-      <div class="benefit-text">
-        <strong>Sell Easily</strong>
-        <span>List items you no longer need and earn money from students who need them.</span>
-      </div>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">🤝</div>
-      <div class="benefit-text">
-        <strong>Connect with Fellow Students</strong>
-        <span>Deal directly with people you already know and trust on campus.</span>
-      </div>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">📚</div>
-      <div class="benefit-text">
-        <strong>Access Textbooks &amp; Resources</strong>
-        <span>Find affordable textbooks from students who have already completed the course.</span>
-      </div>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">♻️</div>
-      <div class="benefit-text">
-        <strong>Reduce Waste</strong>
-        <span>Give useful items a second life rather than throwing them away.</span>
-      </div>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon">🔒</div>
-      <div class="benefit-text">
-        <strong>Safe &amp; School Community</strong>
-        <span>Only registered Chitechma students can access and list items on the platform.</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="info-section">
-    <h2>🛠️ Technologies Used</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;">
-      <div style="background:#E8F7EA;border:1px solid #33A344;border-radius:6px;padding:12px 18px;font-size:14px;color:#267A33;font-weight:bold;">HTML5 — Page Structure</div>
-      <div style="background:#E8F7EA;border:1px solid #33A344;border-radius:6px;padding:12px 18px;font-size:14px;color:#267A33;font-weight:bold;">CSS3 — Styling &amp; Responsive Design</div>
-      <div style="background:#E8F7EA;border:1px solid #33A344;border-radius:6px;padding:12px 18px;font-size:14px;color:#267A33;font-weight:bold;">JavaScript — Interactivity &amp; Logic</div>
-      <div style="background:#E8F7EA;border:1px solid #33A344;border-radius:6px;padding:12px 18px;font-size:14px;color:#267A33;font-weight:bold;">localStorage — Data Storage</div>
-      <div style="background:#E8F7EA;border:1px solid #33A344;border-radius:6px;padding:12px 18px;font-size:14px;color:#267A33;font-weight:bold;">FileReader API — Image Uploads</div>
-    </div>
-    <p style="margin-top:14px;font-size:13px;color:#888;">
-      Note: This is a front-end prototype using browser localStorage as the data store.
-      A future version would use a PHP + MySQL backend for real persistent storage.
-    </p>
-  </div>
+    <footer>
+      <p>© 2025 Chitechma University Institute — Student Marketplace</p>
+      <p>
+        Buea, Cameroon · <a href="contact.html">Contact Us</a> ·
+        <a href="index.html">Home</a>
+      </p>
+    </footer>
 
-  <div class="info-section">
-    <h2>🚀 Future Improvements</h2>
-    <ul>
-      <li>Real backend authentication using PHP and MySQL database</li>
-      <li>Image hosting on a real server</li>
-      <li>Real-time messaging/chat between buyers and sellers</li>
-      <li>Admin moderation panel to approve/reject listings</li>
-      <li>Search with advanced filters and sorting</li>
-      <li>Mobile app version (Android/iOS)</li>
-      <li>MTN Mobile Money / Orange Money payment integration</li>
-      <li>Email notifications for new messages and listings</li>
-    </ul>
-  </div>
-</div>
-
-<footer>
-  <p>© 2025 Chitechma University Institute — Student Marketplace</p>
-  <p>Buea, Cameroon · <a href="contact.html">Contact Us</a> · <a href="index.html">Home</a></p>
-</footer>
-
-<script src="js/app.js"></script>
-</body>
+    <script src="js/app.js"></script>
+  </body>
 </html>

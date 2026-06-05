@@ -1,102 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chitechma Marketplace — Home</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<div class="header">
-  <div class="header-left">
-    <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-    <div>
-      <div class="header-title">Chitechma University Institute</div>
-      <div class="header-subtitle">Student Marketplace — Buea, Cameroon</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chitechma Marketplace — Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
+        <div>
+          <div class="header-title">Chitechma University Institute</div>
+          <div class="header-subtitle">
+            Student Marketplace — Buea, Cameroon
+          </div>
+        </div>
+      </div>
+      <div class="header-right">Buy · Sell · Connect</div>
+      <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
     </div>
-  </div>
-  <div class="header-right">Buy · Sell · Connect</div>
-  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
-</div>
 
-<nav>
-  <ul id="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="products.html">Products</a></li>
-    <li><a href="sell.html">Sell Item</a></li>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li id="nav-extra"></li>
-  </ul>
-</nav>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="sell.html">Sell Item</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="nav-extra"></li>
+      </ul>
+    </nav>
 
-<div class="hero">
-  <h1>Chitechma Student Marketplace</h1>
-  <p>Buy and sell items with fellow Chitechma students on campus. Textbooks, electronics, clothing, and more — all in one place.</p>
-  <div class="hero-buttons">
-    <a href="login.html" class="btn btn-white">🔑 Login to Dashboard</a>
-    <a href="products.html" class="btn btn-outline">🛍️ Browse Products</a>
-  </div>
-</div>
-
-<!-- HOW IT WORKS -->
-<div class="features-section">
-  <h2 class="section-heading">How It Works</h2>
-  <div class="features">
-    <div class="feature-box">
-      <div class="feature-icon">🔑</div>
-      <h3>1. Login with your Account</h3>
-      <p>Use your registered email and password to access your personal dashboard.</p>
+    <div class="hero">
+      <h1>Chitechma Student Marketplace</h1>
+      <p>
+        Buy and sell items with fellow Chitechma students on campus. Textbooks,
+        electronics, clothing, and more — all in one place.
+      </p>
+      <div class="hero-buttons">
+        <a href="login.html" class="btn btn-white">🔑 Login to Dashboard</a>
+        <a href="products.html" class="btn btn-outline">🛍️ Browse Products</a>
+      </div>
     </div>
-    <div class="feature-box">
-      <div class="feature-icon">🛍️</div>
-      <h3>2. Browse Products</h3>
-      <p>View all items listed by Chitechma students — filtered by category or price.</p>
-    </div>
-    <div class="feature-box">
-      <div class="feature-icon">📦</div>
-      <h3>3. List Your Item</h3>
-      <p>Fill in a simple form, upload a photo, and your item goes live instantly.</p>
-    </div>
-    <div class="feature-box">
-      <div class="feature-icon">🤝</div>
-      <h3>4. Contact & Deal</h3>
-      <p>Contact the seller via phone or email and meet on campus to complete the deal.</p>
-    </div>
-  </div>
-</div>
 
-<!-- FEATURED PRODUCTS -->
-<div class="features-section" style="padding-top:0;">
-  <h2 class="section-heading">Featured Products</h2>
-  <div id="featured-products" class="products-grid">
-    <div class="empty-state"><div class="empty-icon">⏳</div><p>Loading products...</p></div>
-  </div>
-  <div style="text-align:center; margin-top:28px;">
-    <a href="products.html" class="btn btn-green">See All Products →</a>
-  </div>
-</div>
+    <!-- HOW IT WORKS -->
+    <div class="features-section">
+      <h2 class="section-heading">How It Works</h2>
+      <div class="features">
+        <div class="feature-box">
+          <div class="feature-icon">🔑</div>
+          <h3>1. Login with your Account</h3>
+          <p>
+            Use your registered email and password to access your personal
+            dashboard.
+          </p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">🛍️</div>
+          <h3>2. Browse Products</h3>
+          <p>
+            View all items listed by Chitechma students — filtered by category
+            or price.
+          </p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">📦</div>
+          <h3>3. List Your Item</h3>
+          <p>
+            Fill in a simple form, upload a photo, and your item goes live
+            instantly.
+          </p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">🤝</div>
+          <h3>4. Contact & Deal</h3>
+          <p>
+            Contact the seller via phone or email and meet on campus to complete
+            the deal.
+          </p>
+        </div>
+      </div>
+    </div>
 
-<footer>
-  <p>© 2025 Chitechma University Institute — Student Marketplace</p>
-  <p>Buea, Cameroon · <a href="contact.html">Contact Us</a> · <a href="about.html">About</a></p>
-</footer>
+    <!-- FEATURED PRODUCTS -->
+    <div class="features-section" style="padding-top: 0">
+      <h2 class="section-heading">Featured Products</h2>
+      <div id="featured-products" class="products-grid">
+        <div class="empty-state">
+          <div class="empty-icon">⏳</div>
+          <p>Loading products...</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 28px">
+        <a href="products.html" class="btn btn-green">See All Products →</a>
+      </div>
+    </div>
 
-<script src="js/app.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const products = DB.getApproved();
-    const grid = document.getElementById('featured-products');
-    if (products.length === 0) {
-      grid.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><p>No products listed yet. <a href="sell.html">Be the first to sell!</a></p></div>';
-      return;
-    }
-    // Show latest 4 products
-    const featured = products.slice(-4).reverse();
-    grid.innerHTML = featured.map(buildCard).join('');
-  });
-</script>
-</body>
+    <footer>
+      <p>© 2025 Chitechma University Institute — Student Marketplace</p>
+      <p>
+        Buea, Cameroon · <a href="contact.html">Contact Us</a> ·
+        <a href="about.html">About</a>
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const products = DB.getApproved();
+        const grid = document.getElementById("featured-products");
+        if (products.length === 0) {
+          grid.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">📭</div><p>No products listed yet. <a href="sell.html">Be the first to sell!</a></p></div>';
+          return;
+        }
+        // Show latest 4 products
+        const featured = products.slice(-4).reverse();
+        grid.innerHTML = featured.map(buildCard).join("");
+      });
+    </script>
+  </body>
 </html>
