@@ -1,201 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chitechma Marketplace — Products</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chitechma Marketplace — Products</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- ============================
-         HEADER
-         ============================ -->
-    <div class="header">
-        <div class="header-left">
-            <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-            <div>
-                <div class="header-title">Chitechma University Institute</div>
-                <div class="header-subtitle">Student Marketplace &mdash; Buea, Cameroon</div>
-            </div>
-        </div>
-        <div class="header-right">
-            12 Products Available
-        </div>
+<div class="header">
+  <div class="header-left">
+    <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
+    <div>
+      <div class="header-title">Chitechma University Institute</div>
+      <div class="header-subtitle">Student Marketplace — Buea, Cameroon</div>
     </div>
+  </div>
+  <div class="header-right" id="product-count"></div>
+  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
+</div>
+<nav>
+  <ul id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="sell.html">Sell Item</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="nav-extra"></li>
+  </ul>
+</nav>
 
-    <!-- ============================
-         NAVIGATION BAR
-         ============================ -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html" class="active">Products</a></li>
-            <li><a href="sell.html">Sell Item</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+<div class="main-content">
+  <h1 class="page-title">All Products for Sale</h1>
 
-    <!-- ============================
-         PRODUCTS PAGE CONTENT
-         ============================ -->
-    <div class="main-content">
+  <!-- SEARCH & FILTER BAR -->
+  <div class="filter-bar">
+    <input type="text" id="search-input" placeholder="🔍 Search products..." oninput="filterProducts()">
+    <select id="cat-filter" onchange="filterProducts()">
+      <option value="">All Categories</option>
+      <option value="clothing">👔 Clothing &amp; Accessories</option>
+      <option value="electronics">💻 Electronics</option>
+      <option value="books">📚 Books &amp; Study Materials</option>
+      <option value="furniture">🪑 Furniture</option>
+      <option value="sports">⚽ Sports &amp; Equipment</option>
+      <option value="other">📦 Other</option>
+    </select>
+    <select id="cond-filter" onchange="filterProducts()">
+      <option value="">All Conditions</option>
+      <option value="new">Brand New</option>
+      <option value="like-new">Like New</option>
+      <option value="very-good">Very Good</option>
+      <option value="good">Good</option>
+      <option value="fair">Fair</option>
+    </select>
+    <select id="sort-filter" onchange="filterProducts()">
+      <option value="newest">Newest First</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+    </select>
+    <button class="btn btn-sm" onclick="clearFilters()">✖ Clear</button>
+  </div>
 
-        <h1 class="page-title">All Products for Sale</h1>
+  <div id="results-info" style="font-size:13px; color:#777; margin-bottom:14px;"></div>
+  <div id="products-grid" class="products-grid"></div>
+</div>
 
-        <!-- Notice -->
-        <div class="notice">
-            📢 These items are listed by Chitechma students. Contact the seller directly to make a purchase.
-        </div>
+<!-- SELL CTA -->
+<div style="background:#E8F7EA; border-top:2px solid #33A344; padding:30px; text-align:center; margin-top:20px;">
+  <p style="font-size:16px; color:#267A33; font-weight:bold; margin-bottom:8px;">Have something to sell?</p>
+  <p style="font-size:14px; color:#555; margin-bottom:16px;">List your item in seconds and reach all Chitechma students.</p>
+  <a href="sell.html" class="btn btn-green">+ List My Item</a>
+</div>
 
-        <!-- ---- CATEGORY: Clothing & Accessories ---- -->
-        <h2 class="section-heading">👟 Clothing &amp; Accessories</h2>
-        <div class="products-grid" style="margin-bottom: 35px;">
+<footer>
+  <p>© 2025 Chitechma University Institute — Student Marketplace</p>
+  <p><a href="contact.html">Contact</a> · <a href="about.html">About</a></p>
+</footer>
 
-            <div class="product-card">
-                <div class="product-img green">👟</div>
-                <div class="product-card-body">
-                    <div class="product-name">Nike Running Shoes (Size 42)</div>
-                    <div class="product-price">5,000 FCFA</div>
-                    <div class="product-seller">👤 Seller: Jean Mballa</div>
-                    <div class="product-contact">📞 677 123 456</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Good &bull; Used 3 months</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
+<script src="js/app.js"></script>
+<script>
+var allProducts = [];
 
-            <div class="product-card">
-                <div class="product-img teal">👔</div>
-                <div class="product-card-body">
-                    <div class="product-name">Men's Formal Shirt (L)</div>
-                    <div class="product-price">2,500 FCFA</div>
-                    <div class="product-seller">👤 Seller: Blaise Fouda</div>
-                    <div class="product-contact">📞 693 987 654</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Like New &bull; White, size L</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
+document.addEventListener('DOMContentLoaded', function () {
+  allProducts = DB.getApproved();
+  document.getElementById('product-count').textContent = allProducts.length + ' Products';
+  filterProducts();
+});
 
-            <div class="product-card">
-                <div class="product-img orange">👜</div>
-                <div class="product-card-body">
-                    <div class="product-name">School Backpack (Black)</div>
-                    <div class="product-price">8,000 FCFA</div>
-                    <div class="product-seller">👤 Seller: Peter Ngom</div>
-                    <div class="product-contact">📞 670 345 678</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Very Good &bull; Many pockets</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
+function filterProducts() {
+  var search = document.getElementById('search-input').value.toLowerCase().trim();
+  var cat    = document.getElementById('cat-filter').value;
+  var cond   = document.getElementById('cond-filter').value;
+  var sort   = document.getElementById('sort-filter').value;
 
-        </div>
+  var results = allProducts.filter(function(p) {
+    var matchSearch = !search || p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search) || p.sellerName.toLowerCase().includes(search);
+    var matchCat    = !cat  || p.category === cat;
+    var matchCond   = !cond || p.condition === cond;
+    return matchSearch && matchCat && matchCond;
+  });
 
-        <!-- ---- CATEGORY: Electronics ---- -->
-        <h2 class="section-heading">💻 Electronics</h2>
-        <div class="products-grid" style="margin-bottom: 35px;">
+  if (sort === 'price-asc')  results.sort(function(a,b){ return a.price - b.price; });
+  if (sort === 'price-desc') results.sort(function(a,b){ return b.price - a.price; });
+  if (sort === 'newest')     results.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
 
-            <div class="product-card">
-                <div class="product-img blue">💻</div>
-                <div class="product-card-body">
-                    <div class="product-name">HP Laptop 15&quot; Core i5</div>
-                    <div class="product-price">180,000 FCFA</div>
-                    <div class="product-seller">👤 Seller: Amina Fomban</div>
-                    <div class="product-contact">📞 699 234 567</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Good &bull; 8GB RAM, 500GB</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
+  var grid = document.getElementById('products-grid');
+  var info = document.getElementById('results-info');
+  info.textContent = results.length + ' product' + (results.length !== 1 ? 's' : '') + ' found';
 
-            <div class="product-card">
-                <div class="product-img purple">📱</div>
-                <div class="product-card-body">
-                    <div class="product-name">Tecno Spark 10 Phone</div>
-                    <div class="product-price">65,000 FCFA</div>
-                    <div class="product-seller">👤 Seller: Rachel Ngo</div>
-                    <div class="product-contact">📞 678 555 222</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Very Good &bull; With charger</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
+  if (results.length === 0) {
+    grid.innerHTML = '<div class="empty-state" style="width:100%;"><div class="empty-icon">🔍</div><p>No products match your search. <a href="sell.html">Be the first to list one!</a></p></div>';
+  } else {
+    grid.innerHTML = results.map(buildCard).join('');
+  }
+}
 
-            <div class="product-card">
-                <div class="product-img teal">🎧</div>
-                <div class="product-card-body">
-                    <div class="product-name">Wireless Headphones</div>
-                    <div class="product-price">12,000 FCFA</div>
-                    <div class="product-seller">👤 Seller: Kevin Essam</div>
-                    <div class="product-contact">📞 655 777 333</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Good &bull; Bluetooth 5.0</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- ---- CATEGORY: Books & Study Material ---- -->
-        <h2 class="section-heading">📚 Books &amp; Study Materials</h2>
-        <div class="products-grid" style="margin-bottom: 35px;">
-
-            <div class="product-card">
-                <div class="product-img purple">📚</div>
-                <div class="product-card-body">
-                    <div class="product-name">Engineering Mathematics Textbook</div>
-                    <div class="product-price">3,500 FCFA</div>
-                    <div class="product-seller">👤 Seller: Grace Ewane</div>
-                    <div class="product-contact">📞 650 456 789</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Good &bull; Level 2 material</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img green">📖</div>
-                <div class="product-card-body">
-                    <div class="product-name">Introduction to Programming</div>
-                    <div class="product-price">2,000 FCFA</div>
-                    <div class="product-seller">👤 Seller: Samuel Ateba</div>
-                    <div class="product-contact">📞 682 100 200</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Fair &bull; Some notes inside</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img red">📓</div>
-                <div class="product-card-body">
-                    <div class="product-name">Medical Affairs Notes Bundle</div>
-                    <div class="product-price">4,500 FCFA</div>
-                    <div class="product-seller">👤 Seller: Diane Nkoum</div>
-                    <div class="product-contact">📞 691 303 404</div>
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">Condition: Good &bull; Year 1 &amp; 2</div>
-                    <a href="sell.html" class="btn">Contact Seller</a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Sell CTA -->
-        <div style="background-color: #E8F7EA; border: 1px solid #33A344; border-radius: 8px; padding: 25px; text-align: center; margin-top: 10px;">
-            <p style="font-size: 16px; color: #267A33; font-weight: bold; margin-bottom: 10px;">
-                Do you have something to sell?
-            </p>
-            <p style="font-size: 14px; color: #555; margin-bottom: 18px;">
-                List your item on the Chitechma Marketplace and reach hundreds of fellow students!
-            </p>
-            <a href="sell.html" class="btn btn-green">+ List My Item</a>
-        </div>
-
-    </div>
-
-    <!-- ============================
-         FOOTER
-         ============================ -->
-    <footer>
-        <p>&copy; 2026 Chitechma University Institute &mdash; Student Marketplace</p>
-        <p>Buea, Cameroon &bull; <a href="contact.html">Contact Us</a> &bull; <a href="about.html">About This Project</a></p>
-    </footer>
-
+function clearFilters() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('cat-filter').value   = '';
+  document.getElementById('cond-filter').value  = '';
+  document.getElementById('sort-filter').value  = 'newest';
+  filterProducts();
+}
+</script>
 </body>
 </html>

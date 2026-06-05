@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chitechma Marketplace — Contact Seller</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
+    <div>
+      <div class="header-title">Chitechma University Institute</div>
+      <div class="header-subtitle">Student Marketplace — Buea, Cameroon</div>
+    </div>
+  </div>
+  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
+</div>
+<nav>
+  <ul id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="sell.html">Sell Item</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="nav-extra"></li>
+  </ul>
+</nav>
+
+<div class="main-content">
+  <p style="margin-bottom:16px;"><a href="products.html" style="color:#33A344; text-decoration:none;">← Back to Products</a></p>
+  <div id="alert-box"></div>
+  <div id="page-content">
+    <div class="empty-state"><div class="empty-icon">⏳</div><p>Loading...</p></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Chitechma University Institute — Student Marketplace · Buea, Cameroon</p>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var id = parseInt(getParam('id'));
+  if (!id) { showError(); return; }
+
+  var p = DB.getProductById(id);
+  if (!p) { showError(); return; }
+
+  var imgHtml = p.image
+    ? '<img src="' + p.image + '" alt="' + escHtml(p.name) + '" style="width:100%;max-height:280px;object-fit:cover;border-radius:8px;margin-bottom:16px;">'
+    : '<div class="product-img" style="background:' + (p.color||'#33A344') + ';border-radius:8px;height:180px;font-size:60px;margin-bottom:16px;">' + (p.emoji||'📦') + '</div>';
+
+  var content = '<div class="two-col">' +
+    '<div class="col-main">' +
+    '<h1 class="page-title">' + escHtml(p.name) + '</h1>' +
+    imgHtml +
+    '<div class="info-section">' +
+    '<h2>📋 Product Details</h2>' +
+    '<p><strong>Price:</strong> <span style="color:#33A344;font-size:18px;font-weight:bold;">' + formatPrice(p.price) + '</span></p>' +
+    '<p><strong>Category:</strong> ' + escHtml(p.category) + '</p>' +
+    '<p><strong>Condition:</strong> <span class="condition-badge">' + (CONDITIONS[p.condition]||p.condition) + '</span></p>' +
+    '<p><strong>Listed on:</strong> ' + formatDate(p.date) + '</p>' +
+    '<p style="margin-top:12px;"><strong>Description:</strong></p>' +
+    '<p style="background:#f9f9f9;border:1px solid #eee;border-radius:5px;padding:14px;margin-top:6px;line-height:1.7;">' + escHtml(p.description) + '</p>' +
+    '</div></div>' +
+
+    '<div class="col-side">' +
+    '<div class="info-section">' +
+    '<h2>👤 Seller Information</h2>' +
+    '<div class="seller-card" style="flex-direction:column;padding:20px;">' +
+    '<div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">' +
+    '<div class="seller-avatar">' + escHtml(p.sellerName.charAt(0).toUpperCase()) + '</div>' +
+    '<div><div style="font-size:18px;font-weight:bold;color:#267A33;">' + escHtml(p.sellerName) + '</div>' +
+    '<div style="font-size:13px;color:#888;">Chitechma Student</div></div></div>' +
+
+    '<p style="font-size:13px;color:#555;margin-bottom:16px;">Contact this seller directly using the options below:</p>' +
+
+    '<a href="tel:' + escHtml(p.sellerPhone) + '" class="contact-method">' +
+    '<div class="cm-icon">📞</div>' +
+    '<div><div class="cm-label">Phone / WhatsApp</div>' +
+    '<div class="cm-value">' + escHtml(p.sellerPhone) + '</div></div></a>' +
+
+    (p.sellerEmail ? '<a href="mailto:' + escHtml(p.sellerEmail) + '" class="contact-method">' +
+    '<div class="cm-icon">📧</div>' +
+    '<div><div class="cm-label">Email Address</div>' +
+    '<div class="cm-value">' + escHtml(p.sellerEmail) + '</div></div></a>' : '') +
+
+    '<a href="https://wa.me/237' + p.sellerPhone.replace(/\s/g,'') + '" target="_blank" class="contact-method">' +
+    '<div class="cm-icon">💬</div>' +
+    '<div><div class="cm-label">WhatsApp</div>' +
+    '<div class="cm-value">Chat on WhatsApp</div></div></a>' +
+    '</div></div>' +
+
+    '<div class="info-section">' +
+    '<h2>✉️ Send a Message</h2>' +
+    '<p style="font-size:13px;color:#555;margin-bottom:14px;">Send the seller a message and they will see it in their dashboard.</p>' +
+    '<div class="form-group">' +
+    '<label>Your Name</label>' +
+    '<input type="text" id="msg-name" placeholder="Your name">' +
+    '</div>' +
+    '<div class="form-group">' +
+    '<label>Message</label>' +
+    '<textarea id="msg-text" placeholder="e.g. Hi, I am interested in this item. Is it still available?"></textarea>' +
+    '</div>' +
+    '<button class="form-submit" onclick="sendMessage(' + p.id + ',' + (p.sellerId||0) + ')">📩 Send Message</button>' +
+    '</div>' +
+
+    '</div></div>';
+
+  document.getElementById('page-content').innerHTML = content;
+
+  // Pre-fill name if logged in
+  var u = Auth.getUser();
+  if (u) {
+    var nameInput = document.getElementById('msg-name');
+    if (nameInput) nameInput.value = u.name;
+  }
+});
+
+function sendMessage(productId, sellerId) {
+  var name = document.getElementById('msg-name').value.trim();
+  var text = document.getElementById('msg-text').value.trim();
+  if (!name || !text) { showAlert('Please enter your name and a message.', 'error'); return; }
+  if (!sellerId) { showAlert('Cannot find seller info.', 'error'); return; }
+
+  var user = Auth.getUser();
+  DB.addMessage({
+    id:        uid(),
+    fromId:    user ? user.id : 0,
+    fromName:  name,
+    toId:      sellerId,
+    productId: productId,
+    text:      text,
+    date:      new Date().toISOString(),
+    read:      false
+  });
+  showAlert('Message sent! The seller will see it in their dashboard.', 'success');
+  document.getElementById('msg-text').value = '';
+}
+
+function showError() {
+  document.getElementById('page-content').innerHTML =
+    '<div class="empty-state"><div class="empty-icon">❌</div><p>Product not found. <a href="products.html">Go back to products.</a></p></div>';
+}
+</script>
+</body>
+</html>
