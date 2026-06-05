@@ -1,219 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chitechma Marketplace — Sell an Item</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chitechma Marketplace — Sell an Item</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- ============================
-         HEADER
-         ============================ -->
-    <div class="header">
-        <div class="header-left">
-            <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-            <div>
-                <div class="header-title">Chitechma University Institute</div>
-                <div class="header-subtitle">Student Marketplace &mdash; Buea, Cameroon</div>
-            </div>
+<div class="header">
+  <div class="header-left">
+    <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
+    <div>
+      <div class="header-title">Chitechma University Institute</div>
+      <div class="header-subtitle">Student Marketplace — Buea, Cameroon</div>
+    </div>
+  </div>
+  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
+</div>
+<nav>
+  <ul id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="sell.html" class="active">Sell Item</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="nav-extra"></li>
+  </ul>
+</nav>
+
+<div class="main-content">
+  <h1 class="page-title">📦 List an Item for Sale</h1>
+  <div id="alert-box"></div>
+
+  <div class="sell-grid">
+
+    <!-- MAIN FORM -->
+    <div class="sell-main">
+      <h2 style="color:#267A33;font-size:17px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #eee;">Product Details</h2>
+
+      <div class="form-group">
+        <label for="pname">Product Name *</label>
+        <input type="text" id="pname" placeholder="e.g. Nike Running Shoes, HP Laptop 15&quot;">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Category *</label>
+          <select id="category">
+            <option value="">-- Select category --</option>
+            <option value="clothing">👔 Clothing &amp; Accessories</option>
+            <option value="electronics">💻 Electronics</option>
+            <option value="books">📚 Books &amp; Study Materials</option>
+            <option value="furniture">🪑 Furniture &amp; Room Items</option>
+            <option value="sports">⚽ Sports &amp; Equipment</option>
+            <option value="other">📦 Other</option>
+          </select>
         </div>
+        <div class="form-group">
+          <label for="condition">Condition *</label>
+          <select id="condition">
+            <option value="">-- Select condition --</option>
+            <option value="new">Brand New</option>
+            <option value="like-new">Like New</option>
+            <option value="very-good">Very Good</option>
+            <option value="good">Good</option>
+            <option value="fair">Fair</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price (FCFA) *</label>
+        <input type="number" id="price" placeholder="e.g. 5000" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description *</label>
+        <textarea id="description" placeholder="Describe your item — colour, size, age, what is included, reason for selling..."></textarea>
+      </div>
+
+      <h2 style="color:#267A33;font-size:17px;margin:20px 0 16px;padding-bottom:10px;border-bottom:1px solid #eee;">Your Contact Details</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="sname">Your Full Name *</label>
+          <input type="text" id="sname" placeholder="e.g. Jean Mballa">
+        </div>
+        <div class="form-group">
+          <label for="sphone">Phone / WhatsApp *</label>
+          <input type="tel" id="sphone" placeholder="e.g. 677 123 456">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="semail">Email Address (optional)</label>
+        <input type="email" id="semail" placeholder="e.g. student@chitechma.cm">
+      </div>
+
+      <!-- IMAGE UPLOAD -->
+      <h2 style="color:#267A33;font-size:17px;margin:20px 0 16px;padding-bottom:10px;border-bottom:1px solid #eee;">Product Photo</h2>
+
+      <div class="profile-upload-area" id="upload-area" onclick="document.getElementById('img-input').click()" style="margin-bottom:16px;">
+        <div id="img-preview">
+          <div style="font-size:40px;margin-bottom:8px;">📷</div>
+          <p>Click to upload a product photo</p>
+          <p style="font-size:12px;color:#aaa;margin-top:4px;">JPG or PNG · Max 1.5 MB</p>
+        </div>
+      </div>
+      <input type="file" id="img-input" accept="image/*" style="display:none;" onchange="previewImage(this)">
+      <p id="img-name" style="font-size:13px;color:#33A344;margin-bottom:16px;"></p>
+
+      <button class="form-submit" onclick="submitProduct()">🚀 Publish Listing</button>
     </div>
 
-    <!-- ============================
-         NAVIGATION BAR
-         ============================ -->
-    <nav>
+    <!-- SIDE TIPS -->
+    <div class="sell-side">
+      <div class="info-section">
+        <h2>✅ Tips for a Good Listing</h2>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="sell.html" class="active">Sell Item</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+          <li>Use a clear, specific product name</li>
+          <li>Set a fair and realistic price</li>
+          <li>Be honest about the condition</li>
+          <li>Write a detailed description</li>
+          <li>Add a clear photo — it sells faster!</li>
+          <li>Use a number buyers can reach</li>
         </ul>
-    </nav>
-
-    <!-- ============================
-         SELL FORM CONTENT
-         ============================ -->
-    <div class="main-content">
-
-        <h1 class="page-title">Sell an Item</h1>
-
-        <div class="notice">
-            📋 Fill in the details below to list your item on the Chitechma Student Marketplace. Other students will be able to see your listing and contact you.
-        </div>
-
-        <!-- Two-column layout: Form on left, tips on right -->
-        <div style="display: flex; flex-wrap: wrap; gap: 25px;">
-
-            <!-- FORM COLUMN -->
-            <div style="flex: 2; min-width: 280px;">
-                <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 28px;">
-
-                    <h2 style="color: #267A33; font-size: 18px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-                        Product Details
-                    </h2>
-
-                    <!-- Form — action points to products.html for demo purposes -->
-                    <form action="products.html" method="get">
-
-                        <div class="form-group">
-                            <label for="product-name">Product Name *</label>
-                            <input
-                                type="text"
-                                id="product-name"
-                                name="product_name"
-                                placeholder="e.g. Nike Running Shoes, HP Laptop"
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="category">Category *</label>
-                            <select id="category" name="category" required>
-                                <option value="">-- Select a category --</option>
-                                <option value="electronics">Electronics (Laptops, Phones, etc.)</option>
-                                <option value="books">Books &amp; Study Materials</option>
-                                <option value="clothing">Clothing &amp; Accessories</option>
-                                <option value="furniture">Furniture &amp; Room Items</option>
-                                <option value="sports">Sports &amp; Equipment</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="price">Price (FCFA) *</label>
-                            <input
-                                type="number"
-                                id="price"
-                                name="price"
-                                placeholder="e.g. 5000"
-                                min="0"
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="condition">Condition *</label>
-                            <select id="condition" name="condition" required>
-                                <option value="">-- Select condition --</option>
-                                <option value="new">Brand New</option>
-                                <option value="like-new">Like New</option>
-                                <option value="good">Good</option>
-                                <option value="fair">Fair</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="description">Description *</label>
-                            <textarea
-                                id="description"
-                                name="description"
-                                placeholder="Describe your item: colour, size, age, what is included, reason for selling..."
-                                required
-                            ></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="seller-name">Your Full Name *</label>
-                            <input
-                                type="text"
-                                id="seller-name"
-                                name="seller_name"
-                                placeholder="e.g. Jean-Paul Mballa"
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone / WhatsApp Number *</label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="e.g. 677 123 456"
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address (optional)</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="e.g. student@chitechma.cm"
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="product-image">Upload Product Image (optional)</label>
-                            <input
-                                type="file"
-                                id="product-image"
-                                name="product_image"
-                                accept="image/*"
-                                style="padding: 8px; border: 1px dashed #33A344; background: #f9f9f9;"
-                            >
-                            <p style="font-size: 12px; color: #888; margin-top: 5px;">Accepted: JPG, PNG. Max size: 2MB</p>
-                        </div>
-
-                        <button type="submit" class="form-submit">
-                            📦 Submit My Listing
-                        </button>
-
-                    </form>
-
-                </div>
-            </div>
-
-            <!-- TIPS COLUMN -->
-            <div style="flex: 1; min-width: 220px;">
-
-                <div class="info-section">
-                    <h2>✅ Tips for a Good Listing</h2>
-                    <ul>
-                        <li>Use a clear, specific product name</li>
-                        <li>Set a fair and realistic price</li>
-                        <li>Be honest about the condition</li>
-                        <li>Write a detailed description</li>
-                        <li>Add a clear photo if possible</li>
-                        <li>Use a phone number buyers can reach</li>
-                    </ul>
-                </div>
-
-                <div class="info-section">
-                    <h2>📌 Rules &amp; Guidelines</h2>
-                    <ul>
-                        <li>Only Chitechma students can sell</li>
-                        <li>No stolen or illegal items</li>
-                        <li>Prices must be in FCFA</li>
-                        <li>You must be available to be contacted</li>
-                        <li>Complete all required fields (*)</li>
-                    </ul>
-                </div>
-
-                <div class="info-section">
-                    <h2>❓ Need Help?</h2>
-                    <p>If you have a problem with your listing, contact the project team via the <a href="contact.html" style="color:#33A344;">Contact Page</a>.</p>
-                </div>
-
-            </div>
-
-        </div>
-
+      </div>
+      <div class="info-section">
+        <h2>📌 Rules &amp; Guidelines</h2>
+        <ul>
+          <li>Only Chitechma students can sell</li>
+          <li>No stolen or illegal items</li>
+          <li>Prices must be realistic in FCFA</li>
+          <li>You must be reachable by buyers</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <h2>❓ Need Help?</h2>
+        <p>Having a problem? Contact the team via the <a href="contact.html" style="color:#33A344;">Contact Page</a>.</p>
+      </div>
     </div>
 
-    <!-- ============================
-         FOOTER
-         ============================ -->
-    <footer>
-        <p>&copy; 2026 Chitechma University Institute &mdash; Student Marketplace</p>
-        <p>Buea, Cameroon &bull; <a href="contact.html">Contact Us</a> &bull; <a href="about.html">About This Project</a></p>
-    </footer>
+  </div>
+</div>
 
+<footer>
+  <p>© 2025 Chitechma University Institute — Student Marketplace</p>
+  <p><a href="contact.html">Contact</a> · <a href="about.html">About</a></p>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+var selectedImageBase64 = null;
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Pre-fill seller info if logged in
+  var u = Auth.getUser();
+  if (u) {
+    document.getElementById('sname').value  = u.name  || '';
+    document.getElementById('semail').value = u.email || '';
+    // Try to get phone from full user record
+    var fullUser = DB.getUserById(u.id);
+    if (fullUser && fullUser.phone) document.getElementById('sphone').value = fullUser.phone;
+  }
+});
+
+function previewImage(input) {
+  var file = input.files[0];
+  if (!file) return;
+  readImage(file, function (base64) {
+    if (!base64) return;
+    selectedImageBase64 = base64;
+    document.getElementById('img-preview').innerHTML =
+      '<img src="' + base64 + '" style="width:100%;max-height:200px;object-fit:cover;border-radius:8px;">';
+    document.getElementById('img-name').textContent = '✅ ' + file.name + ' selected';
+  });
+}
+
+function submitProduct() {
+  var name        = document.getElementById('pname').value.trim();
+  var category    = document.getElementById('category').value;
+  var condition   = document.getElementById('condition').value;
+  var price       = document.getElementById('price').value.trim();
+  var description = document.getElementById('description').value.trim();
+  var sellerName  = document.getElementById('sname').value.trim();
+  var sellerPhone = document.getElementById('sphone').value.trim();
+  var sellerEmail = document.getElementById('semail').value.trim();
+
+  if (!name || !category || !condition || !price || !description || !sellerName || !sellerPhone) {
+    showAlert('Please fill in all required fields (marked with *).', 'error'); return;
+  }
+  if (isNaN(price) || parseInt(price) < 0) {
+    showAlert('Please enter a valid price.', 'error'); return;
+  }
+
+  var u = Auth.getUser();
+  var product = {
+    id:          uid(),
+    name:        name,
+    category:    category,
+    condition:   condition,
+    price:       parseInt(price),
+    description: description,
+    sellerName:  sellerName,
+    sellerPhone: sellerPhone,
+    sellerEmail: sellerEmail,
+    sellerId:    u ? u.id : 0,
+    image:       selectedImageBase64,
+    emoji:       CAT_EMOJI[category] || '📦',
+    color:       CAT_COLOR[category] || '#33A344',
+    date:        new Date().toISOString(),
+    approved:    true
+  };
+
+  DB.addProduct(product);
+  showAlert('Your listing has been published successfully! Redirecting to products...', 'success');
+  setTimeout(function () { window.location.href = 'products.html'; }, 1800);
+}
+</script>
 </body>
 </html>

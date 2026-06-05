@@ -1,202 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chitechma Marketplace — Contact</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chitechma Marketplace — Contact</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- ============================
-         HEADER
-         ============================ -->
-    <div class="header">
-        <div class="header-left">
-            <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-            <div>
-                <div class="header-title">Chitechma University Institute</div>
-                <div class="header-subtitle">Student Marketplace &mdash; Buea, Cameroon</div>
-            </div>
+<div class="header">
+  <div class="header-left">
+    <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
+    <div>
+      <div class="header-title">Chitechma University Institute</div>
+      <div class="header-subtitle">Student Marketplace — Buea, Cameroon</div>
+    </div>
+  </div>
+  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
+</div>
+<nav>
+  <ul id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="sell.html">Sell Item</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li id="nav-extra"></li>
+  </ul>
+</nav>
+
+<div class="main-content">
+  <h1 class="page-title">Contact Us</h1>
+
+  <div class="two-col">
+    <!-- School Info -->
+    <div class="col-main">
+      <div class="info-section">
+        <h2>🏫 School Contact Information</h2>
+        <div class="contact-item">
+          <div class="contact-icon">🏛️</div>
+          <div>
+            <div class="contact-label">School Name</div>
+            <div class="contact-value">Chitechma University Institute</div>
+          </div>
         </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Buea, South West Region, Cameroon</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">info@chitechma.cm</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+237 677 000 001</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+237 699 000 002</div>
+          </div>
+        </div>
+        <div class="contact-item" style="border-bottom:none;">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Office Hours</div>
+            <div class="contact-value">Monday – Friday: 7:30 AM – 5:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>📋 Course Information</h2>
+        <div class="contact-item">
+          <div class="contact-icon">📗</div>
+          <div>
+            <div class="contact-label">Subject</div>
+            <div class="contact-value">Web Development — HTML, CSS &amp; JavaScript</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏫</div>
+          <div>
+            <div class="contact-label">Department</div>
+            <div class="contact-value">Technology &amp; Medical Affairs</div>
+          </div>
+        </div>
+        <div class="contact-item" style="border-bottom:none;">
+          <div class="contact-icon">📅</div>
+          <div>
+            <div class="contact-label">Academic Year</div>
+            <div class="contact-value">2024 – 2025</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- ============================
-         NAVIGATION BAR
-         ============================ -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="sell.html">Sell Item</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- ============================
-         CONTACT PAGE CONTENT
-         ============================ -->
-    <div class="main-content">
-
-        <h1 class="page-title">Contact Us</h1>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 25px;">
-
-            <!-- LEFT COLUMN: School Contact Info -->
-            <div style="flex: 1; min-width: 260px;">
-
-                <div class="info-section">
-                    <h2>🏫 School Contact Information</h2>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">🏛️</div>
-                        <div>
-                            <div class="contact-label">School Name</div>
-                            <div class="contact-value">Chitechma University Institute</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <div class="contact-label">Location</div>
-                            <div class="contact-value">Buea, South West Region, Cameroon</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <div class="contact-label">Email Address</div>
-                            <div class="contact-value">info@chitechma.cm</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <div class="contact-label">Phone Number</div>
-                            <div class="contact-value">+237 677 000 001</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">💬</div>
-                        <div>
-                            <div class="contact-label">WhatsApp</div>
-                            <div class="contact-value">+237 699 000 002</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">🌐</div>
-                        <div>
-                            <div class="contact-label">Website</div>
-                            <div class="contact-value">www.chitechma.cm</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item" style="border-bottom: none;">
-                        <div class="contact-icon">🕐</div>
-                        <div>
-                            <div class="contact-label">Office Hours</div>
-                            <div class="contact-value">Monday – Friday: 7:30 AM – 5:00 PM</div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- RIGHT COLUMN: Project Team -->
-            <div style="flex: 1; min-width: 260px;">
-
-                <div class="info-section">
-                    <h2>👥 Project Team Members</h2>
-                    <p style="margin-bottom: 16px; font-size: 13px;">
-                        This website was built by the following Chitechma students as a group project.
-                    </p>
-
-                    <!-- REPLACE THESE NAMES WITH YOUR ACTUAL GROUP MEMBERS -->
-
-                    <div class="team-member">
-                        <div class="team-avatar">M1</div>
-                        <div>
-                            <div class="team-name">NJOMUWEH MILTON</div>
-                            <div class="team-role">Home Page, Navigation, About&amp; Contact</div>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-avatar">M2</div>
-                        <div>
-                            <div class="team-name">OBI PERPETUA</div>
-                            <div class="team-role">Login Page &amp; Dashboard</div>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-avatar">M3</div>
-                        <div>
-                            <div class="team-name">STAREN SOBA</div>
-                            <div class="team-role">Products Page &amp; Sell Form</div>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-avatar">M4</div>
-                        <div>
-                            <div class="team-name">EBAKO RUTH</div>
-                            <div class="team-role">CSS Styling &amp; Branding</div>
-                        </div>
-                    </div>
-
-                    <p style="font-size: 12px; color: #aaa; margin-top: 16px; font-style: italic;">
-                        ✏️ Replace the names above with your actual group members' names before submitting.
-                    </p>
-                </div>
-
-                <!-- Course Info -->
-                <div class="info-section">
-                    <h2>📋 Course Information</h2>
-                    <div class="contact-item">
-                        <div class="contact-icon">📗</div>
-                        <div>
-                            <div class="contact-label">Subject</div>
-                            <div class="contact-value">Web Development &mdash; HTML &amp; CSS</div>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🏫</div>
-                        <div>
-                            <div class="contact-label">Department</div>
-                            <div class="contact-value">Computer Software Engineering</div>
-                        </div>
-                    </div>
-                    <div class="contact-item" style="border-bottom: none;">
-                        <div class="contact-icon">📅</div>
-                        <div>
-                            <div class="contact-label">Academic Year</div>
-                            <div class="contact-value">2025 &ndash; 2026</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+    <!-- Team Members (loaded from DB) -->
+    <div class="col-side">
+      <div class="info-section">
+        <h2>👥 Project Team Members</h2>
+        <p style="font-size:13px;color:#888;margin-bottom:16px;">
+          This website was built by the following Chitechma students.
+          <span id="admin-edit-note"></span>
+        </p>
+        <div id="team-list">
+          <div class="empty-state"><div class="empty-icon">⏳</div><p>Loading team...</p></div>
         </div>
-
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- ============================
-         FOOTER
-         ============================ -->
-    <footer>
-        <p>&copy; 2026 Chitechma University Institute &mdash; Student Marketplace</p>
-        <p>Buea, Cameroon &bull; Built with HTML &amp; CSS &bull; <a href="about.html">About This Project</a></p>
-    </footer>
+<footer>
+  <p>© 2025 Chitechma University Institute — Student Marketplace</p>
+  <p>Buea, Cameroon · <a href="about.html">About This Project</a></p>
+</footer>
 
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  loadTeam();
+  if (Auth.isAdmin()) {
+    document.getElementById('admin-edit-note').innerHTML =
+      '· <a href="admin.html#team" style="color:#33A344;font-weight:bold;">Manage team in Admin Panel →</a>';
+  }
+});
+
+function loadTeam() {
+  var team = DB.getTeam();
+  var list = document.getElementById('team-list');
+  if (team.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="empty-icon">👥</div><p>No team members added yet.</p></div>';
+    return;
+  }
+  list.innerHTML = team.map(function (m) {
+    var avatarContent = m.photo
+      ? '<img src="' + m.photo + '" alt="' + escHtml(m.name) + '">'
+      : escHtml(m.name.charAt(0).toUpperCase());
+    return '<div class="team-member">' +
+      '<div class="team-avatar">' + avatarContent + '</div>' +
+      '<div>' +
+      '<div class="team-name">' + escHtml(m.name) + '</div>' +
+      '<div class="team-role">' + escHtml(m.role) + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+</script>
 </body>
 </html>
