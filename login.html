@@ -7,119 +7,92 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- HEADER -->
     <div class="header">
       <div class="header-left">
         <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
         <div>
           <div class="header-title">Chitechma University Institute</div>
           <div class="header-subtitle">
-            Student Marketplace — Buea, Cameroon
+            Student Marketplace &mdash; Buea, Cameroon
           </div>
         </div>
       </div>
-      <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
     </div>
+
+    <!-- NAVIGATION BAR -->
     <nav>
-      <ul id="nav-links">
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="sell.html">Sell Item</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li id="nav-extra"></li>
       </ul>
     </nav>
 
+    <!--LOGIN FORM -->
     <div class="login-page-bg">
       <div class="login-container">
+        <!-- Logo -->
         <img src="images/logo.png" alt="Chitechma Logo" class="login-logo" />
+
+        <!-- Title -->
         <div class="login-title">Student Login</div>
         <div class="login-subtitle">
-          Enter your email and password to access your dashboard
+          Enter your matricule and password to access your dashboard
         </div>
 
-        <div id="alert-box"></div>
+        <!-- Login Form — action links to dashboard.html on submit-->
+        <form action="dashboard.html" method="get">
+          <div class="form-group">
+            <label for="matricule">Matricule Number</label>
+            <input
+              type="text"
+              id="matricule"
+              name="matricule"
+              placeholder="e.g. CHI/UB/2023/0001"
+              required
+            />
+          </div>
 
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="e.g. student@chitechma.cm"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-          />
-        </div>
-        <button class="form-submit" onclick="doLogin()">🔑 Login</button>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
 
-        <p style="margin-top: 18px; font-size: 13px; color: #555">
-          Don't have an account?
-          <a href="register.html" style="color: #33a344; font-weight: bold"
-            >Register here</a
-          >
+          <button type="submit" class="form-submit">Login to Dashboard</button>
+        </form>
+
+        <!-- Notice -->
+        <p style="margin-top: 20px; font-size: 13px; color: #888">
+          Don't have an account? Contact your academic office.
         </p>
-        <p style="margin-top: 10px; font-size: 12px; color: #aaa">
-          Admin: admin@chitechma.cm / admin123
-        </p>
-        <p style="margin-top: 6px">
+
+        <p style="margin-top: 14px">
           <a
             href="index.html"
             style="color: #33a344; font-size: 13px; text-decoration: none"
-            >← Back to Home</a
           >
+            &larr; Back to Home
+          </a>
         </p>
       </div>
     </div>
 
+    <!--  FOOTER -->
     <footer>
       <p>
-        © 2025 Chitechma University Institute — Student Marketplace · Buea,
-        Cameroon
+        &copy; 2026 Chitechma University Institute &mdash; Student Marketplace
       </p>
+      <p>Buea, Cameroon &bull; <a href="contact.html">Contact Us</a></p>
     </footer>
-
-    <script src="app.js"></script>
-    <script>
-      // Redirect if already logged in
-      document.addEventListener("DOMContentLoaded", function () {
-        if (Auth.isLoggedIn()) {
-          window.location.href = Auth.isAdmin()
-            ? "admin.html"
-            : "dashboard.html";
-        }
-        // Allow Enter key to submit
-        document
-          .getElementById("password")
-          .addEventListener("keydown", function (e) {
-            if (e.key === "Enter") doLogin();
-          });
-      });
-
-      function doLogin() {
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-        if (!email || !password) {
-          showAlert("Please enter your email and password.", "error");
-          return;
-        }
-        const result = Auth.login(email, password);
-        if (result.success) {
-          showAlert("Login successful! Redirecting...", "success");
-          setTimeout(function () {
-            window.location.href =
-              result.user.role === "admin" ? "admin.html" : "dashboard.html";
-          }, 800);
-        } else {
-          showAlert(result.msg, "error");
-        }
-      }
-    </script>
   </body>
 </html>

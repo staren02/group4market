@@ -7,229 +7,151 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- HEADER -->
     <div class="header">
       <div class="header-left">
         <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
         <div>
           <div class="header-title">Chitechma University Institute</div>
           <div class="header-subtitle">
-            Student Marketplace — Buea, Cameroon
+            Student Marketplace &mdash; Buea, Cameroon
           </div>
         </div>
       </div>
-      <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
+      <div class="header-right">👤 Logged in as Student</div>
     </div>
+
+    <!-- NAVIGATION BAR -->
     <nav>
-      <ul id="nav-links">
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="sell.html">Sell Item</a></li>
         <li><a href="dashboard.html" class="active">Dashboard</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li id="nav-extra"></li>
       </ul>
     </nav>
 
+    <!-- DASHBOARD CONTENT -->
     <div class="main-content">
-      <div id="welcome-banner" class="welcome-banner">
-        <h2 id="welcome-msg">Welcome! 👋</h2>
-        <p>Chitechma Student Marketplace — Buea</p>
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <h2>Welcome back, Student! 👋</h2>
+        <p>
+          You are logged into the Chitechma Student Marketplace. What would you
+          like to do today?
+        </p>
       </div>
 
-      <!-- STATS -->
+      <!-- Quick Stats -->
       <div class="dashboard-stats">
         <div class="stat-box">
-          <div class="stat-number" id="stat-total">0</div>
-          <div class="stat-label">Total Products</div>
+          <div class="stat-number">12</div>
+          <div class="stat-label">Products Available</div>
         </div>
         <div class="stat-box">
-          <div class="stat-number" id="stat-mine">0</div>
+          <div class="stat-number">3</div>
           <div class="stat-label">My Listings</div>
         </div>
         <div class="stat-box">
-          <div class="stat-number" id="stat-unread">0</div>
-          <div class="stat-label">Unread Messages</div>
+          <div class="stat-number">5</div>
+          <div class="stat-label">Active Sellers</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">2</div>
+          <div class="stat-label">New Today</div>
         </div>
       </div>
 
-      <!-- QUICK LINKS -->
+      <!-- Dashboard Navigation Cards -->
       <h2 class="page-title">My Dashboard</h2>
-      <div class="dashboard-grid" style="margin-bottom: 30px">
+
+      <div class="dashboard-grid">
+        <!-- Browse Products Card -->
         <a href="products.html" class="dash-card">
           <div class="dash-icon">🛍️</div>
           <div class="dash-card-title">Browse Products</div>
-          <div class="dash-card-desc">Find items sold by other students.</div>
+          <div class="dash-card-desc">
+            View all items listed by Chitechma students. Find great deals on
+            campus.
+          </div>
         </a>
+
+        <!-- Sell Item Card -->
         <a href="sell.html" class="dash-card">
           <div class="dash-icon">📦</div>
           <div class="dash-card-title">Sell an Item</div>
-          <div class="dash-card-desc">List a product for other students.</div>
-        </a>
-        <a href="#my-listings" class="dash-card">
-          <div class="dash-icon">📋</div>
-          <div class="dash-card-title">My Listings</div>
-          <div class="dash-card-desc">View and delete your listed items.</div>
-        </a>
-        <a href="#inbox" class="dash-card">
-          <div class="dash-icon">📬</div>
-          <div class="dash-card-title">Inbox</div>
           <div class="dash-card-desc">
-            Messages from buyers interested in your items.
+            List a product you want to sell. Fill in the details and let buyers
+            find you.
+          </div>
+        </a>
+
+        <!-- My Products Card -->
+        <a href="products.html" class="dash-card">
+          <div class="dash-icon">📋</div>
+          <div class="dash-card-title">My Products</div>
+          <div class="dash-card-desc">
+            View and manage the items you have listed for sale on the
+            marketplace.
+          </div>
+        </a>
+
+        <!-- Profile Card -->
+        <a href="login.html" class="dash-card">
+          <div class="dash-icon">👤</div>
+          <div class="dash-card-title">My Profile</div>
+          <div class="dash-card-desc">
+            View your student profile, matricule number and account settings.
+          </div>
+        </a>
+
+        <!-- About Card -->
+        <a href="about.html" class="dash-card">
+          <div class="dash-icon">ℹ️</div>
+          <div class="dash-card-title">About</div>
+          <div class="dash-card-desc">
+            Learn more about the Chitechma Student Marketplace system.
+          </div>
+        </a>
+
+        <!-- Contact Card -->
+        <a href="contact.html" class="dash-card">
+          <div class="dash-icon">📬</div>
+          <div class="dash-card-title">Contact &amp; Help</div>
+          <div class="dash-card-desc">
+            Get help or reach out to the project team and school administration.
           </div>
         </a>
       </div>
 
-      <!-- MY LISTINGS -->
-      <h2 class="page-title" id="my-listings">My Listings</h2>
-      <div
-        id="my-products-grid"
-        class="products-grid"
-        style="margin-bottom: 30px"
-      ></div>
+      <!-- Notice -->
+      <div class="notice" style="margin-top: 30px">
+        💡 <strong>Tip:</strong> To sell an item, click "Sell an Item" above. To
+        browse what is available, click "Browse Products".
+      </div>
 
-      <!-- INBOX -->
-      <h2 class="page-title" id="inbox">
-        📬 Inbox <span id="unread-badge"></span>
-      </h2>
-      <div id="inbox-list"></div>
+      <!-- Logout link -->
+      <div style="text-align: right; margin-top: 10px">
+        <a
+          href="index.html"
+          style="color: #888; font-size: 13px; text-decoration: none"
+        >
+          &larr; Logout &amp; Return Home
+        </a>
+      </div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
-      <p>© 2025 Chitechma University Institute — Student Marketplace</p>
-      <p><a href="contact.html">Contact</a> · <a href="about.html">About</a></p>
+      <p>
+        &copy; 2026 Chitechma University Institute &mdash; Student Marketplace
+      </p>
+      <p>
+        Buea, Cameroon &bull; <a href="contact.html">Contact Us</a> &bull;
+        <a href="about.html">About This Project</a>
+      </p>
     </footer>
-
-    <script src="app.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (!Auth.requireLogin()) return;
-
-        const user = Auth.getUser();
-        document.getElementById("welcome-msg").textContent =
-          "Welcome back, " + user.name.split(" ")[0] + "! 👋";
-
-        const allProducts = DB.getApproved();
-        const myProducts = allProducts.filter(function (p) {
-          return p.sellerId === user.id;
-        });
-        const unread = DB.countUnread(user.id);
-
-        document.getElementById("stat-total").textContent = allProducts.length;
-        document.getElementById("stat-mine").textContent = myProducts.length;
-        document.getElementById("stat-unread").textContent = unread;
-
-        // My listings
-        const grid = document.getElementById("my-products-grid");
-        if (myProducts.length === 0) {
-          grid.innerHTML =
-            '<div class="empty-state"><div class="empty-icon">📭</div><p>You have no listings yet. <a href="sell.html">Sell something!</a></p></div>';
-        } else {
-          grid.innerHTML = myProducts
-            .map(function (p) {
-              return buildCard(p) + "";
-            })
-            .join("");
-          // Add delete buttons after rendering
-          myProducts.forEach(function (p) {
-            var card = grid.querySelector('[data-id="' + p.id + '"]');
-            if (card) {
-              var del = document.createElement("div");
-              del.style.padding = "0 14px 14px";
-              del.innerHTML =
-                '<button class="btn btn-red" style="width:100%;" onclick="deleteMyProduct(' +
-                p.id +
-                ')">🗑️ Delete Listing</button>';
-              card.appendChild(del);
-            }
-          });
-        }
-
-        // Inbox
-        const messages = DB.getInbox(user.id);
-        const inboxEl = document.getElementById("inbox-list");
-        if (messages.length === 0) {
-          inboxEl.innerHTML =
-            '<div class="empty-state"><div class="empty-icon">📭</div><p>No messages yet.</p></div>';
-        } else {
-          const badge = document.getElementById("unread-badge");
-          if (unread > 0)
-            badge.innerHTML =
-              '<span style="background:#ef4444;color:#fff;border-radius:20px;padding:2px 10px;font-size:13px;">' +
-              unread +
-              " new</span>";
-
-          inboxEl.innerHTML = messages
-            .reverse()
-            .map(function (msg) {
-              const product = DB.getProductById(msg.productId);
-              const pName = product ? product.name : "Unknown product";
-              const unreadClass = msg.read ? "" : "unread";
-              return (
-                '<div class="message-item ' +
-                unreadClass +
-                '" id="msg-' +
-                msg.id +
-                '">' +
-                '<div class="msg-meta">📩 From: <strong>' +
-                escHtml(msg.fromName) +
-                "</strong> · " +
-                "About: <em>" +
-                escHtml(pName) +
-                "</em> · " +
-                formatDate(msg.date) +
-                "</div>" +
-                '<div class="msg-text">' +
-                escHtml(msg.text) +
-                "</div>" +
-                '<div class="msg-reply-form">' +
-                '<input type="text" id="reply-' +
-                msg.id +
-                '" placeholder="Type a reply...">' +
-                '<button onclick="sendReply(' +
-                msg.id +
-                "," +
-                msg.fromId +
-                "," +
-                msg.productId +
-                ')">Reply</button>' +
-                "</div></div>"
-              );
-            })
-            .join("");
-
-          // Mark all as read
-          messages.forEach(function (msg) {
-            DB.markRead(msg.id);
-          });
-          updateNavbar();
-        }
-      });
-
-      function deleteMyProduct(id) {
-        if (!confirm("Are you sure you want to delete this listing?")) return;
-        DB.deleteProduct(id);
-        window.location.reload();
-      }
-
-      function sendReply(msgId, toId, productId) {
-        const input = document.getElementById("reply-" + msgId);
-        const text = input ? input.value.trim() : "";
-        if (!text) return;
-        const user = Auth.getUser();
-        DB.addMessage({
-          id: uid(),
-          fromId: user.id,
-          fromName: user.name,
-          toId: toId,
-          productId: productId,
-          text: text,
-          date: new Date().toISOString(),
-          read: false,
-        });
-        input.value = "";
-        showAlert("Reply sent!", "success");
-      }
-    </script>
   </body>
 </html>
