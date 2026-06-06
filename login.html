@@ -1,103 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chitechma Marketplace — Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- ============================
-         HEADER
-         ============================ -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
     <div class="header">
-        <div class="header-left">
-            <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-            <div>
-                <div class="header-title">Chitechma University Institute</div>
-                <div class="header-subtitle">Student Marketplace &mdash; Buea, Cameroon</div>
-            </div>
+      <div class="header-left">
+        <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
+        <div>
+          <div class="header-title">Chitechma University Institute</div>
+          <div class="header-subtitle">
+            Student Marketplace &mdash; Buea, Cameroon
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- ============================
-         NAVIGATION BAR
-         ============================ -->
+    <!-- NAVIGATION BAR -->
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="sell.html">Sell Item</a></li>
-            <li><a href="dashboard.html" class="active">Dashboard</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="sell.html">Sell Item</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
 
-    <!-- ============================
-         LOGIN FORM
-         ============================ -->
+    <!--LOGIN FORM -->
     <div class="login-page-bg">
-        <div class="login-container">
+      <div class="login-container">
+        <!-- Logo -->
+        <img src="images/logo.png" alt="Chitechma Logo" class="login-logo" />
 
-            <!-- Logo -->
-            <img src="images/logo.png" alt="Chitechma Logo" class="login-logo">
-
-            <!-- Title -->
-            <div class="login-title">Student Login</div>
-            <div class="login-subtitle">Enter your matricule and password to access your dashboard</div>
-
-            <!-- Login Form — action links to dashboard.html on submit -->
-            <form action="dashboard.html" method="get">
-
-                <div class="form-group">
-                    <label for="matricule">Matricule Number</label>
-                    <input
-                        type="text"
-                        id="matricule"
-                        name="matricule"
-                        placeholder="e.g. CHI/UB/2023/0001"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Enter your password"
-                        required
-                    >
-                </div>
-
-                <button type="submit" class="form-submit">Login to Dashboard</button>
-
-            </form>
-
-            <!-- Notice -->
-            <p style="margin-top: 20px; font-size: 13px; color: #888;">
-                Don't have an account? Contact your academic office.
-            </p>
-
-            <p style="margin-top: 14px;">
-                <a href="index.html" style="color: #33A344; font-size: 13px; text-decoration: none;">
-                    &larr; Back to Home
-                </a>
-            </p>
-
+        <!-- Title -->
+        <div class="login-title">Student Login</div>
+        <div class="login-subtitle">
+          Enter your matricule and password to access your dashboard
         </div>
+
+        <!-- Login Form — action links to dashboard.html on submit-->
+        <form action="dashboard.html" method="get">
+          <div class="form-group">
+            <label for="matricule">Matricule Number</label>
+            <input
+              type="text"
+              id="matricule"
+              name="matricule"
+              placeholder="e.g. CHI/UB/2023/0001"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="form-submit">Login to Dashboard</button>
+        </form>
+
+        <!-- Notice -->
+        <p style="margin-top: 20px; font-size: 13px; color: #888">
+          Don't have an account? Contact your academic office.
+        </p>
+
+        <p style="margin-top: 14px">
+          <a
+            href="index.html"
+            style="color: #33a344; font-size: 13px; text-decoration: none"
+          >
+            &larr; Back to Home
+          </a>
+        </p>
+      </div>
     </div>
 
-    <!-- ============================
-         FOOTER
-         ============================ -->
+    <!--  FOOTER -->
     <footer>
-        <p>&copy; 2026 Chitechma University Institute &mdash; Student Marketplace</p>
-        <p>Buea, Cameroon &bull; <a href="contact.html">Contact Us</a></p>
+      <p>
+        &copy; 2026 Chitechma University Institute &mdash; Student Marketplace
+      </p>
+      <p>Buea, Cameroon &bull; <a href="contact.html">Contact Us</a></p>
     </footer>
-
-</body>
+  </body>
 </html>

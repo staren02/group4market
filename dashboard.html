@@ -1,144 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chitechma Marketplace — Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- ============================
-         HEADER
-         ============================ -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
     <div class="header">
-        <div class="header-left">
-            <img src="images/logo.png" alt="Chitechma Logo" class="header-logo">
-            <div>
-                <div class="header-title">Chitechma University Institute</div>
-                <div class="header-subtitle">Student Marketplace &mdash; Buea, Cameroon</div>
-            </div>
+      <div class="header-left">
+        <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
+        <div>
+          <div class="header-title">Chitechma University Institute</div>
+          <div class="header-subtitle">
+            Student Marketplace &mdash; Buea, Cameroon
+          </div>
         </div>
-        <div class="header-right">
-            👤 Logged in as Student
-        </div>
+      </div>
+      <div class="header-right">👤 Logged in as Student</div>
     </div>
 
-    <!-- ============================
-         NAVIGATION BAR
-         ============================ -->
+    <!-- NAVIGATION BAR -->
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="sell.html">Sell Item</a></li>
-            <li><a href="dashboard.html" class="active">Dashboard</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="sell.html">Sell Item</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
 
-    <!-- ============================
-         DASHBOARD CONTENT
-         ============================ -->
+    <!-- DASHBOARD CONTENT -->
     <div class="main-content">
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <h2>Welcome back, Student! 👋</h2>
+        <p>
+          You are logged into the Chitechma Student Marketplace. What would you
+          like to do today?
+        </p>
+      </div>
 
-        <!-- Welcome Banner -->
-        <div class="welcome-banner">
-            <h2>Welcome back, Student! 👋</h2>
-            <p>You are logged into the Chitechma Student Marketplace. What would you like to do today?</p>
+      <!-- Quick Stats -->
+      <div class="dashboard-stats">
+        <div class="stat-box">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Products Available</div>
         </div>
-
-        <!-- Quick Stats -->
-        <div class="dashboard-stats">
-            <div class="stat-box">
-                <div class="stat-number">12</div>
-                <div class="stat-label">Products Available</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">3</div>
-                <div class="stat-label">My Listings</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Active Sellers</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">2</div>
-                <div class="stat-label">New Today</div>
-            </div>
+        <div class="stat-box">
+          <div class="stat-number">3</div>
+          <div class="stat-label">My Listings</div>
         </div>
-
-        <!-- Dashboard Navigation Cards -->
-        <h2 class="page-title">My Dashboard</h2>
-
-        <div class="dashboard-grid">
-
-            <!-- Browse Products Card -->
-            <a href="products.html" class="dash-card">
-                <div class="dash-icon">🛍️</div>
-                <div class="dash-card-title">Browse Products</div>
-                <div class="dash-card-desc">View all items listed by Chitechma students. Find great deals on campus.</div>
-            </a>
-
-            <!-- Sell Item Card -->
-            <a href="sell.html" class="dash-card">
-                <div class="dash-icon">📦</div>
-                <div class="dash-card-title">Sell an Item</div>
-                <div class="dash-card-desc">List a product you want to sell. Fill in the details and let buyers find you.</div>
-            </a>
-
-            <!-- My Products Card -->
-            <a href="products.html" class="dash-card">
-                <div class="dash-icon">📋</div>
-                <div class="dash-card-title">My Products</div>
-                <div class="dash-card-desc">View and manage the items you have listed for sale on the marketplace.</div>
-            </a>
-
-            <!-- Profile Card -->
-            <a href="login.html" class="dash-card">
-                <div class="dash-icon">👤</div>
-                <div class="dash-card-title">My Profile</div>
-                <div class="dash-card-desc">View your student profile, matricule number and account settings.</div>
-            </a>
-
-            <!-- About Card -->
-            <a href="about.html" class="dash-card">
-                <div class="dash-icon">ℹ️</div>
-                <div class="dash-card-title">About</div>
-                <div class="dash-card-desc">Learn more about the Chitechma Student Marketplace system.</div>
-            </a>
-
-            <!-- Contact Card -->
-            <a href="contact.html" class="dash-card">
-                <div class="dash-icon">📬</div>
-                <div class="dash-card-title">Contact &amp; Help</div>
-                <div class="dash-card-desc">Get help or reach out to the project team and school administration.</div>
-            </a>
-
+        <div class="stat-box">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Active Sellers</div>
         </div>
-
-        <!-- Notice -->
-        <div class="notice" style="margin-top: 30px;">
-            💡 <strong>Tip:</strong> To sell an item, click "Sell an Item" above. To browse what is available, click "Browse Products".
+        <div class="stat-box">
+          <div class="stat-number">2</div>
+          <div class="stat-label">New Today</div>
         </div>
+      </div>
 
-        <!-- Logout link -->
-        <div style="text-align: right; margin-top: 10px;">
-            <a href="index.html" style="color: #888; font-size: 13px; text-decoration: none;">
-                &larr; Logout &amp; Return Home
-            </a>
-        </div>
+      <!-- Dashboard Navigation Cards -->
+      <h2 class="page-title">My Dashboard</h2>
 
+      <div class="dashboard-grid">
+        <!-- Browse Products Card -->
+        <a href="products.html" class="dash-card">
+          <div class="dash-icon">🛍️</div>
+          <div class="dash-card-title">Browse Products</div>
+          <div class="dash-card-desc">
+            View all items listed by Chitechma students. Find great deals on
+            campus.
+          </div>
+        </a>
+
+        <!-- Sell Item Card -->
+        <a href="sell.html" class="dash-card">
+          <div class="dash-icon">📦</div>
+          <div class="dash-card-title">Sell an Item</div>
+          <div class="dash-card-desc">
+            List a product you want to sell. Fill in the details and let buyers
+            find you.
+          </div>
+        </a>
+
+        <!-- My Products Card -->
+        <a href="products.html" class="dash-card">
+          <div class="dash-icon">📋</div>
+          <div class="dash-card-title">My Products</div>
+          <div class="dash-card-desc">
+            View and manage the items you have listed for sale on the
+            marketplace.
+          </div>
+        </a>
+
+        <!-- Profile Card -->
+        <a href="login.html" class="dash-card">
+          <div class="dash-icon">👤</div>
+          <div class="dash-card-title">My Profile</div>
+          <div class="dash-card-desc">
+            View your student profile, matricule number and account settings.
+          </div>
+        </a>
+
+        <!-- About Card -->
+        <a href="about.html" class="dash-card">
+          <div class="dash-icon">ℹ️</div>
+          <div class="dash-card-title">About</div>
+          <div class="dash-card-desc">
+            Learn more about the Chitechma Student Marketplace system.
+          </div>
+        </a>
+
+        <!-- Contact Card -->
+        <a href="contact.html" class="dash-card">
+          <div class="dash-icon">📬</div>
+          <div class="dash-card-title">Contact &amp; Help</div>
+          <div class="dash-card-desc">
+            Get help or reach out to the project team and school administration.
+          </div>
+        </a>
+      </div>
+
+      <!-- Notice -->
+      <div class="notice" style="margin-top: 30px">
+        💡 <strong>Tip:</strong> To sell an item, click "Sell an Item" above. To
+        browse what is available, click "Browse Products".
+      </div>
+
+      <!-- Logout link -->
+      <div style="text-align: right; margin-top: 10px">
+        <a
+          href="index.html"
+          style="color: #888; font-size: 13px; text-decoration: none"
+        >
+          &larr; Logout &amp; Return Home
+        </a>
+      </div>
     </div>
 
-    <!-- ============================
-         FOOTER
-         ============================ -->
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Chitechma University Institute &mdash; Student Marketplace</p>
-        <p>Buea, Cameroon &bull; <a href="contact.html">Contact Us</a> &bull; <a href="about.html">About This Project</a></p>
+      <p>
+        &copy; 2026 Chitechma University Institute &mdash; Student Marketplace
+      </p>
+      <p>
+        Buea, Cameroon &bull; <a href="contact.html">Contact Us</a> &bull;
+        <a href="about.html">About This Project</a>
+      </p>
     </footer>
-
-</body>
+  </body>
 </html>
