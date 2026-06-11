@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chitechma Marketplace — Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <img src="images/logo.png" alt="Chitechma Logo" class="header-logo" />
+        <div>
+          <div class="header-title">Chitechma University Institute</div>
+          <div class="header-subtitle">
+            Admin Dashboard — Student Marketplace
+          </div>
+        </div>
+      </div>
+      <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
+    </div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="sell.html">Sell Item</a></li>
+        <li><a href="admin.html" class="active">Admin</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="nav-extra"></li>
+      </ul>
+    </nav>
+
+    <div class="main-content">
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 20px;
+        "
+      >
+        <h1 class="page-title" style="margin: 0; border: none">
+          🛡️ Admin Dashboard
+        </h1>
+        <span id="admin-name" style="font-size: 14px; color: #555"></span>
+      </div>
+
+      <div id="alert-box"></div>
+
+      <!-- STATS OVERVIEW -->
+      <div class="admin-stat-grid" id="stats-grid"></div>
+
+      <!-- TABS -->
+      <div class="admin-tabs">
+        <div class="admin-tab active" onclick="switchTab('products')">
+          📦 Products
+        </div>
+        <div class="admin-tab" onclick="switchTab('users')">👥 Users</div>
+        <div class="admin-tab" onclick="switchTab('team')">🤝 Team Members</div>
+        <div class="admin-tab" onclick="switchTab('messages')">📬 Messages</div>
+        <div class="admin-tab" onclick="switchTab('profile')">
+          👤 My Profile
+        </div>
+      </div>
+
+      <!-- ══ TAB: PRODUCTS ════════════════════════════════════ -->
+      <div id="tab-products" class="tab-panel active">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <h2 style="color: #267a33; font-size: 17px">All Listings</h2>
+          <input
+            type="text"
+            id="prod-search"
+            placeholder="🔍 Search products..."
+            oninput="renderProducts()"
+            style="
+              padding: 8px 12px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              font-size: 14px;
+              min-width: 200px;
+            "
+          />
+        </div>
+        <div style="overflow-x: auto">
+          <table class="admin-table" id="products-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Seller</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ TAB: USERS ════════════════════════════════════════ -->
+      <div id="tab-users" class="tab-panel">
+        <h2 style="color: #267a33; font-size: 17px; margin-bottom: 16px">
+          Registered Users
+        </h2>
+        <div style="overflow-x: auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Matricule</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ TAB: TEAM MEMBERS ══════════════════════════════════ -->
+      <div id="tab-team" class="tab-panel">
+        <h2 style="color: #267a33; font-size: 17px; margin-bottom: 16px">
+          Project Team Members
+        </h2>
+
+        <!-- Add / Edit form -->
+        <div class="inline-form" id="team-form">
+          <h3 id="team-form-title">➕ Add New Team Member</h3>
+          <input type="hidden" id="team-edit-id" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input
+                type="text"
+                id="team-name"
+                placeholder="e.g. Jean Mballa"
+              />
+            </div>
+            <div class="form-group">
+              <label>Role / Responsibility *</label>
+              <input
+                type="text"
+                id="team-role"
+                placeholder="e.g. Home Page & Navigation"
+              />
+            </div>
+          </div>
+
+          <!-- Photo upload -->
+          <div class="form-group">
+            <label>Profile Photo (optional)</label>
+            <div
+              class="profile-upload-area"
+              id="team-photo-area"
+              onclick="document.getElementById('team-photo-input').click()"
+              style="max-width: 200px; padding: 16px"
+            >
+              <div id="team-photo-preview">
+                <div style="font-size: 30px">📷</div>
+                <p style="font-size: 12px">Click to upload</p>
+              </div>
+            </div>
+            <input
+              type="file"
+              id="team-photo-input"
+              accept="image/*"
+              style="display: none"
+              onchange="previewTeamPhoto(this)"
+            />
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap">
+            <button class="btn btn-green" onclick="saveTeamMember()">
+              💾 Save Member
+            </button>
+            <button class="btn" onclick="cancelTeamEdit()">✖ Cancel</button>
+          </div>
+        </div>
+
+        <!-- Team list -->
+        <div id="team-list-admin"></div>
+      </div>
+
+      <!-- ══ TAB: MESSAGES ════════════════════════════════════ -->
+      <div id="tab-messages" class="tab-panel">
+        <h2 style="color: #267a33; font-size: 17px; margin-bottom: 16px">
+          All Messages
+        </h2>
+        <div id="messages-list"></div>
+      </div>
+
+      <!-- ══ TAB: PROFILE ════════════════════════════════════ -->
+      <div id="tab-profile" class="tab-panel">
+        <h2 style="color: #267a33; font-size: 17px; margin-bottom: 16px">
+          My Admin Profile
+        </h2>
+        <div class="two-col">
+          <div class="col-main">
+            <!-- Profile photo -->
+            <div class="info-section">
+              <h2>🖼️ Profile Photo</h2>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 20px;
+                  flex-wrap: wrap;
+                  margin-bottom: 16px;
+                "
+              >
+                <div
+                  id="admin-photo-display"
+                  style="
+                    width: 90px;
+                    height: 90px;
+                    border-radius: 50%;
+                    background: #33a344;
+                    color: #fff;
+                    font-size: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    border: 3px solid #33a344;
+                    flex-shrink: 0;
+                  "
+                ></div>
+                <div>
+                  <p style="font-size: 14px; color: #555; margin-bottom: 10px">
+                    Upload a new profile photo
+                  </p>
+                  <div
+                    class="profile-upload-area"
+                    onclick="
+                      document.getElementById('admin-photo-input').click()
+                    "
+                    style="max-width: 220px; padding: 14px"
+                  >
+                    <p style="font-size: 13px; color: #555">
+                      📷 Click to choose photo
+                    </p>
+                    <p style="font-size: 11px; color: #aaa">
+                      JPG or PNG · Max 1.5 MB
+                    </p>
+                  </div>
+                  <input
+                    type="file"
+                    id="admin-photo-input"
+                    accept="image/*"
+                    style="display: none"
+                    onchange="uploadAdminPhoto(this)"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Update info -->
+            <div class="info-section">
+              <h2>✏️ Update Information</h2>
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="admin-name-input" />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="admin-phone-input" />
+              </div>
+              <button class="btn btn-green" onclick="saveAdminInfo()">
+                💾 Save Changes
+              </button>
+            </div>
+
+            <!-- Change password -->
+            <div class="info-section">
+              <h2>🔒 Change Password</h2>
+              <div class="form-group">
+                <label>Current Password</label>
+                <input
+                  type="password"
+                  id="curr-pass"
+                  placeholder="Enter current password"
+                />
+              </div>
+              <div class="form-group">
+                <label>New Password</label>
+                <input
+                  type="password"
+                  id="new-pass"
+                  placeholder="Enter new password (min 6 chars)"
+                />
+              </div>
+              <div class="form-group">
+                <label>Confirm New Password</label>
+                <input
+                  type="password"
+                  id="conf-pass"
+                  placeholder="Repeat new password"
+                />
+              </div>
+              <button class="btn btn-green" onclick="changePassword()">
+                🔒 Update Password
+              </button>
+            </div>
+          </div>
+
+          <div class="col-side">
+            <div class="info-section">
+              <h2>📊 Account Info</h2>
+              <div id="admin-info-display"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end main-content -->
+
+    <footer>
+      <p>© 2025 Chitechma University Institute — Admin Panel</p>
+      <p>
+        <a href="index.html">Back to Site</a> ·
+        <a href="contact.html">Contact</a>
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+      /* ── state ─────────────────────────────────────── */
+      var teamPhotoBase64 = null;
+
+      /* ── INIT ───────────────────────────────────────── */
+      document.addEventListener("DOMContentLoaded", function () {
+        if (!Auth.requireAdmin()) return;
+
+        var u = Auth.getUser();
+        document.getElementById("admin-name").textContent = "👤 " + u.name;
+
+        renderStats();
+        renderProducts();
+        renderUsers();
+        renderTeam();
+        renderMessages();
+        renderProfileTab();
+
+        // Handle #team anchor from contact page
+        if (window.location.hash === "#team") switchTab("team");
+      });
+
+      /* ── TABS ───────────────────────────────────────── */
+      function switchTab(name) {
+        document.querySelectorAll(".tab-panel").forEach(function (p) {
+          p.classList.remove("active");
+        });
+        document.querySelectorAll(".admin-tab").forEach(function (t) {
+          t.classList.remove("active");
+        });
+        document.getElementById("tab-" + name).classList.add("active");
+        var tabs = document.querySelectorAll(".admin-tab");
+        var tabMap = {
+          products: 0,
+          users: 1,
+          team: 2,
+          messages: 3,
+          profile: 4,
+        };
+        if (tabs[tabMap[name]]) tabs[tabMap[name]].classList.add("active");
+      }
+
+      /* ── STATS ──────────────────────────────────────── */
+      function renderStats() {
+        var products = DB.getProducts();
+        var users = DB.getUsers();
+        var msgs = DB.getMessages();
+        var grid = document.getElementById("stats-grid");
+        grid.innerHTML =
+          stat(products.length, "Total Listings") +
+          stat(users.length, "Registered Users") +
+          stat(DB.getTeam().length, "Team Members") +
+          stat(msgs.length, "Total Messages");
+      }
+      function stat(n, label) {
+        return (
+          '<div class="admin-stat"><div class="num">' +
+          n +
+          '</div><div class="lbl">' +
+          label +
+          "</div></div>"
+        );
+      }
+
+      /* ── PRODUCTS TAB ───────────────────────────────── */
+      function renderProducts() {
+        var search = (
+          document.getElementById("prod-search").value || ""
+        ).toLowerCase();
+        var list = DB.getProducts().filter(function (p) {
+          return (
+            !search ||
+            p.name.toLowerCase().includes(search) ||
+            p.sellerName.toLowerCase().includes(search)
+          );
+        });
+        var tbody = document.getElementById("products-tbody");
+        if (list.length === 0) {
+          tbody.innerHTML =
+            '<tr><td colspan="8" style="text-align:center;padding:30px;color:#888;">No products found.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = list
+          .map(function (p) {
+            var imgCell = p.image
+              ? '<img src="' + p.image + '" alt="">'
+              : '<div style="width:40px;height:40px;background:' +
+                (p.color || "#33A344") +
+                ';border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:18px;">' +
+                (p.emoji || "📦") +
+                "</div>";
+            var status =
+              p.approved !== false
+                ? '<span class="badge badge-green">✅ Live</span>'
+                : '<span class="badge badge-yellow">⏳ Pending</span>';
+            return (
+              "<tr>" +
+              "<td>" +
+              imgCell +
+              "</td>" +
+              '<td style="max-width:180px;">' +
+              escHtml(p.name) +
+              "</td>" +
+              "<td>" +
+              escHtml(p.category) +
+              "</td>" +
+              '<td style="color:#33A344;font-weight:bold;">' +
+              formatPrice(p.price) +
+              "</td>" +
+              "<td>" +
+              escHtml(p.sellerName) +
+              "</td>" +
+              "<td>" +
+              formatDate(p.date) +
+              "</td>" +
+              "<td>" +
+              status +
+              "</td>" +
+              '<td style="white-space:nowrap;">' +
+              '<button class="btn btn-sm" style="margin-right:4px;" onclick="toggleApprove(' +
+              p.id +
+              ')">' +
+              (p.approved !== false ? "Hide" : "Show") +
+              "</button>" +
+              '<button class="btn btn-red btn-sm" onclick="deleteProduct(' +
+              p.id +
+              ')">🗑️</button>' +
+              "</td></tr>"
+            );
+          })
+          .join("");
+      }
+
+      function toggleApprove(id) {
+        var p = DB.getProductById(id);
+        if (!p) return;
+        DB.updateProduct(id, { approved: p.approved === false ? true : false });
+        renderProducts();
+        renderStats();
+      }
+
+      function deleteProduct(id) {
+        if (!confirm("Delete this product listing?")) return;
+        DB.deleteProduct(id);
+        renderProducts();
+        renderStats();
+        showAlert("Product deleted.", "success");
+      }
+
+      /* ── USERS TAB ──────────────────────────────────── */
+      function renderUsers() {
+        var users = DB.getUsers();
+        var tbody = document.getElementById("users-tbody");
+        tbody.innerHTML = users
+          .map(function (u) {
+            var roleBadge =
+              u.role === "admin"
+                ? '<span class="badge badge-green">Admin</span>'
+                : '<span class="badge" style="background:#EEF2FF;color:#4338CA;">Student</span>';
+            var actions =
+              u.role !== "admin"
+                ? '<button class="btn btn-red btn-sm" onclick="deleteUser(' +
+                  u.id +
+                  ')">🗑️</button>'
+                : '<span style="color:#aaa;font-size:13px;">Protected</span>';
+            return (
+              "<tr>" +
+              '<td style="font-weight:bold;">' +
+              escHtml(u.name) +
+              "</td>" +
+              "<td>" +
+              escHtml(u.email) +
+              "</td>" +
+              "<td>" +
+              escHtml(u.matricule || "—") +
+              "</td>" +
+              "<td>" +
+              escHtml(u.phone || "—") +
+              "</td>" +
+              "<td>" +
+              roleBadge +
+              "</td>" +
+              "<td>" +
+              formatDate(u.joinDate) +
+              "</td>" +
+              "<td>" +
+              actions +
+              "</td></tr>"
+            );
+          })
+          .join("");
+      }
+
+      function deleteUser(id) {
+        if (!confirm("Delete this user and all their listings?")) return;
+        DB.deleteUser(id);
+        renderUsers();
+        renderProducts();
+        renderStats();
+        showAlert("User deleted.", "success");
+      }
+
+      /* ── TEAM TAB ───────────────────────────────────── */
+      function renderTeam() {
+        var team = DB.getTeam();
+        var container = document.getElementById("team-list-admin");
+        if (team.length === 0) {
+          container.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">👥</div><p>No team members yet. Add one above.</p></div>';
+          return;
+        }
+        container.innerHTML =
+          '<div style="overflow-x:auto;"><table class="admin-table">' +
+          "<thead><tr><th>Photo</th><th>Name</th><th>Role</th><th>Actions</th></tr></thead>" +
+          "<tbody>" +
+          team
+            .map(function (m) {
+              var avatarCell = m.photo
+                ? '<img src="' +
+                  m.photo +
+                  '" alt="" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">'
+                : '<div style="width:40px;height:40px;border-radius:50%;background:#33A344;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:16px;">' +
+                  escHtml(m.name.charAt(0)) +
+                  "</div>";
+              return (
+                "<tr>" +
+                "<td>" +
+                avatarCell +
+                "</td>" +
+                '<td style="font-weight:bold;">' +
+                escHtml(m.name) +
+                "</td>" +
+                "<td>" +
+                escHtml(m.role) +
+                "</td>" +
+                '<td style="white-space:nowrap;">' +
+                '<button class="btn btn-sm" style="margin-right:4px;" onclick="editTeamMember(' +
+                m.id +
+                ')">✏️ Edit</button>' +
+                '<button class="btn btn-red btn-sm" onclick="removeTeamMember(' +
+                m.id +
+                ')">🗑️</button>' +
+                "</td></tr>"
+              );
+            })
+            .join("") +
+          "</tbody></table></div>";
+      }
+
+      function saveTeamMember() {
+        var name = document.getElementById("team-name").value.trim();
+        var role = document.getElementById("team-role").value.trim();
+        var editId =
+          parseInt(document.getElementById("team-edit-id").value) || 0;
+        if (!name || !role) {
+          showAlert("Please fill in name and role.", "error");
+          return;
+        }
+
+        if (editId) {
+          DB.updateTeamMember(editId, {
+            name: name,
+            role: role,
+            photo: teamPhotoBase64 !== null ? teamPhotoBase64 : undefined,
+          });
+          showAlert("Team member updated.", "success");
+        } else {
+          DB.addTeamMember({
+            id: uid(),
+            name: name,
+            role: role,
+            photo: teamPhotoBase64,
+          });
+          showAlert("Team member added.", "success");
+        }
+        cancelTeamEdit();
+        renderTeam();
+        renderStats();
+      }
+
+      function editTeamMember(id) {
+        var m = DB.getTeam().find(function (t) {
+          return t.id === id;
+        });
+        if (!m) return;
+        document.getElementById("team-edit-id").value = m.id;
+        document.getElementById("team-name").value = m.name;
+        document.getElementById("team-role").value = m.role;
+        document.getElementById("team-form-title").textContent =
+          "✏️ Edit Team Member";
+        if (m.photo) {
+          document.getElementById("team-photo-preview").innerHTML =
+            '<img src="' +
+            m.photo +
+            '" style="width:80px;height:80px;border-radius:50%;object-fit:cover;">';
+          teamPhotoBase64 = m.photo;
+        }
+        document
+          .getElementById("team-form")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      function cancelTeamEdit() {
+        document.getElementById("team-edit-id").value = "";
+        document.getElementById("team-name").value = "";
+        document.getElementById("team-role").value = "";
+        document.getElementById("team-form-title").textContent =
+          "➕ Add New Team Member";
+        document.getElementById("team-photo-preview").innerHTML =
+          '<div style="font-size:30px;">📷</div><p style="font-size:12px;">Click to upload</p>';
+        teamPhotoBase64 = null;
+      }
+
+      function removeTeamMember(id) {
+        if (!confirm("Remove this team member?")) return;
+        DB.deleteTeamMember(id);
+        renderTeam();
+        renderStats();
+        showAlert("Team member removed.", "success");
+      }
+
+      function previewTeamPhoto(input) {
+        var file = input.files[0];
+        if (!file) return;
+        readImage(file, function (base64) {
+          if (!base64) return;
+          teamPhotoBase64 = base64;
+          document.getElementById("team-photo-preview").innerHTML =
+            '<img src="' +
+            base64 +
+            '" style="width:80px;height:80px;border-radius:50%;object-fit:cover;">';
+        });
+      }
+
+      /* ── MESSAGES TAB ───────────────────────────────── */
+      function renderMessages() {
+        var msgs = DB.getMessages().slice().reverse();
+        var el = document.getElementById("messages-list");
+        if (msgs.length === 0) {
+          el.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">📭</div><p>No messages yet.</p></div>';
+          return;
+        }
+        el.innerHTML = msgs
+          .map(function (m) {
+            var p = DB.getProductById(m.productId);
+            var pName = p ? p.name : "Unknown product";
+            return (
+              '<div class="message-item ' +
+              (m.read ? "" : "unread") +
+              '">' +
+              '<div class="msg-meta">From: <strong>' +
+              escHtml(m.fromName) +
+              "</strong>" +
+              " · To: <strong>" +
+              escHtml((DB.getUserById(m.toId) || { name: "?" }).name) +
+              "</strong>" +
+              " · About: <em>" +
+              escHtml(pName) +
+              "</em>" +
+              " · " +
+              formatDate(m.date) +
+              (m.read ? "" : ' <span class="badge badge-green">New</span>') +
+              "</div>" +
+              '<div class="msg-text">' +
+              escHtml(m.text) +
+              "</div>" +
+              '<div style="margin-top:8px;">' +
+              '<button class="btn btn-red btn-sm" onclick="deleteMsg(' +
+              m.id +
+              ')">🗑️ Delete</button>' +
+              "</div></div>"
+            );
+          })
+          .join("");
+      }
+
+      function deleteMsg(id) {
+        var msgs = DB.getMessages().filter(function (m) {
+          return m.id !== id;
+        });
+        DB.saveMessages(msgs);
+        renderMessages();
+        renderStats();
+      }
+
+      /* ── PROFILE TAB ────────────────────────────────── */
+      function renderProfileTab() {
+        var u = Auth.getUser();
+        var fullUser = DB.getUserById(u.id);
+        if (!fullUser) return;
+
+        // Name & phone inputs
+        document.getElementById("admin-name-input").value = fullUser.name || "";
+        document.getElementById("admin-phone-input").value =
+          fullUser.phone || "";
+
+        // Profile photo display
+        var display = document.getElementById("admin-photo-display");
+        if (fullUser.profileImage) {
+          display.innerHTML =
+            '<img src="' +
+            fullUser.profileImage +
+            '" style="width:100%;height:100%;object-fit:cover;">';
+        } else {
+          display.textContent = fullUser.name.charAt(0).toUpperCase();
+        }
+
+        // Account info panel
+        document.getElementById("admin-info-display").innerHTML =
+          '<div class="contact-item"><div class="contact-icon">👤</div><div>' +
+          '<div class="contact-label">Name</div><div class="contact-value">' +
+          escHtml(fullUser.name) +
+          "</div></div></div>" +
+          '<div class="contact-item"><div class="contact-icon">📧</div><div>' +
+          '<div class="contact-label">Email</div><div class="contact-value">' +
+          escHtml(fullUser.email) +
+          "</div></div></div>" +
+          '<div class="contact-item"><div class="contact-icon">📞</div><div>' +
+          '<div class="contact-label">Phone</div><div class="contact-value">' +
+          escHtml(fullUser.phone || "—") +
+          "</div></div></div>" +
+          '<div class="contact-item" style="border-bottom:none;"><div class="contact-icon">🛡️</div><div>' +
+          '<div class="contact-label">Role</div><div class="contact-value"><span class="badge badge-green">Administrator</span></div></div></div>';
+      }
+
+      function uploadAdminPhoto(input) {
+        var file = input.files[0];
+        if (!file) return;
+        readImage(file, function (base64) {
+          if (!base64) return;
+          var u = Auth.getUser();
+          DB.updateUser(u.id, { profileImage: base64 });
+          // Update session
+          var session = DB.getSession();
+          session.profileImage = base64;
+          DB.setSession(session);
+          renderProfileTab();
+          showAlert("Profile photo updated!", "success");
+        });
+      }
+
+      function saveAdminInfo() {
+        var name = document.getElementById("admin-name-input").value.trim();
+        var phone = document.getElementById("admin-phone-input").value.trim();
+        if (!name) {
+          showAlert("Name cannot be empty.", "error");
+          return;
+        }
+        var u = Auth.getUser();
+        DB.updateUser(u.id, { name: name, phone: phone });
+        var session = DB.getSession();
+        session.name = name;
+        DB.setSession(session);
+        renderProfileTab();
+        updateNavbar();
+        showAlert("Profile info saved!", "success");
+      }
+
+      function changePassword() {
+        var curr = document.getElementById("curr-pass").value;
+        var newP = document.getElementById("new-pass").value;
+        var conf = document.getElementById("conf-pass").value;
+        if (!curr || !newP || !conf) {
+          showAlert("Fill in all password fields.", "error");
+          return;
+        }
+        var u = Auth.getUser();
+        var fullUser = DB.getUserById(u.id);
+        if (!fullUser || fullUser.password !== curr) {
+          showAlert("Current password is incorrect.", "error");
+          return;
+        }
+        if (newP !== conf) {
+          showAlert("New passwords do not match.", "error");
+          return;
+        }
+        if (newP.length < 6) {
+          showAlert("Password must be at least 6 characters.", "error");
+          return;
+        }
+        DB.updateUser(u.id, { password: newP });
+        document.getElementById("curr-pass").value = "";
+        document.getElementById("new-pass").value = "";
+        document.getElementById("conf-pass").value = "";
+        showAlert("Password changed successfully!", "success");
+      }
+    </script>
+  </body>
+</html>

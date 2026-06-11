@@ -586,7 +586,11 @@ nav ul li a.active {
   display: flex;
   align-items: center;
   gap: 14px;
+<<<<<<< HEAD
   padding: 11px;
+=======
+  padding: 11px 0;
+>>>>>>> 3dcacd0e3c778c4ff3ec9b06943ab820274a49ef
   border-bottom: 1px solid #f5f5f5;
 }
 
